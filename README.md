@@ -8,3 +8,5 @@ I've made this changes to the original build:
 	- fakefullscreen
 	- noborder
 	- pertag
+	- hide_vacant_tags
+
