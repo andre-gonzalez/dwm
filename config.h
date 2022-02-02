@@ -1,10 +1,18 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx       = 3;   /* border pixel of windows */
+static const unsigned int borderpx       = 1;   /* border pixel of windows */
 static const unsigned int snap           = 32;  /* snap pixel */
-static const int showbar                 = 1;   /* 0 means no bar */
+static const unsigned int gappih         = 2;  /* horiz inner gap between windows */
+static const unsigned int gappiv         = 2;  /* vert inner gap between windows */
+static const unsigned int gappoh         = 70;  /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov         = 20;  /* vert outer gap between windows and screen edge */
+static const int smartgaps_fact          = 1;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
+static const int showbar                 = 0;   /* 0 means no bar */
 static const int topbar                  = 1;   /* 0 means bottom bar */
+/* Status is to be shown on: -1 (all monitors), 0 (a specific monitor by index), 'A' (active monitor) */
+static const int statusmon               = 'A';
+
 /* Indicators: see patch/bar_indicators.h for options */
 static int tagindicatortype              = INDICATOR_TOP_LEFT_SQUARE;
 static int tiledindicatortype            = INDICATOR_NONE;
@@ -136,8 +144,20 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
 	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
-	RULE(.class = "Gimp", .tags = 1 << 4)
-	RULE(.class = "Firefox", .tags = 1 << 7)
+    //        class   instance         title wintype   tags mask isfloating  monitor
+    {     "DBeaver",     NULL,          NULL,  NULL,    1 << 3,    0,          -1 },
+    {          NULL,     NULL,     "Dbeaver",  NULL,    1 << 3,    0,          -1 },
+    {       "Slack",     NULL,          NULL,  NULL,    1 << 1,    0,          -1 },
+    {    "obsidian",     NULL,          NULL,  NULL,    1 << 1,    0,          -1 },
+    {"Virt-manager",     NULL,          NULL,  NULL,    1 << 4,    0,          -1 },
+    {          NULL,     NULL,       "notas",  NULL,    1 << 1,    0,          -1 },
+    {          NULL,     NULL,    "diversos",  NULL,    1 << 2,    0,          -1 },
+    {          NULL,     NULL,    "database",  NULL,    1 << 3,    0,          -1 },
+    {          NULL,     NULL,   "eureciclo",  NULL,    1 << 2,    0,          -1 },
+    {          NULL,     NULL,     "pessoal",  NULL,    1 << 0,    0,          -1 },
+    {    "VSCodium",     NULL,          NULL,  NULL,    1 << 3,    0,          -1 },
+    {    "VSCodium",     NULL,          NULL,  NULL,    1 << 3,    0,          -1 },
+    {        "Anki",     NULL,          NULL,  NULL,    1 << 5,    0,          -1 },
 };
 
 
@@ -155,17 +175,18 @@ static const Rule rules[] = {
  *    name - does nothing, intended for visual clue and for logging / debugging
  */
 static const BarRule barrules[] = {
-	/* monitor  bar    alignment         widthfunc                drawfunc                clickfunc                name */
-	{ -1,       0,     BAR_ALIGN_LEFT,   width_tags,              draw_tags,              click_tags,              "tags" },
-	{ -1,       0,     BAR_ALIGN_LEFT,   width_ltsymbol,          draw_ltsymbol,          click_ltsymbol,          "layout" },
-	{ 'A',      0,     BAR_ALIGN_RIGHT,  width_status,            draw_status,            click_status,            "status" },
-	{ -1,       0,     BAR_ALIGN_NONE,   width_wintitle,          draw_wintitle,          click_wintitle,          "wintitle" },
+	/* monitor   bar    alignment         widthfunc                drawfunc                clickfunc                name */
+	{ -1,        0,     BAR_ALIGN_LEFT,   width_tags,              draw_tags,              click_tags,              "tags" },
+	{ -1,        0,     BAR_ALIGN_LEFT,   width_ltsymbol,          draw_ltsymbol,          click_ltsymbol,          "layout" },
+	{ statusmon, 0,     BAR_ALIGN_RIGHT,  width_status,            draw_status,            click_status,            "status" },
+	{ -1,        0,     BAR_ALIGN_NONE,   width_wintitle,          draw_wintitle,          click_wintitle,          "wintitle" },
 };
 
 /* layout(s) */
-static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.75; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+static const int lockfullscreen = 0; /* 1 will force focus on the fullscreen window */
 
 
 
@@ -174,6 +195,7 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "|M|",      centeredmaster },
 };
 
 
@@ -186,6 +208,7 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 
+#define HOLDKEY 0xffeb // replace 0 with the keysym to activate holdbar
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -207,9 +230,18 @@ static const char *termcmd[]  = { "st", NULL };
 
 
 static Key keys[] = {
-	/* modifier                     key            function                argument */
 	{ MODKEY,                       XK_p,          spawn,                  {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_v,          spawn,                  SHCMD("clipmenu") },
+	{ MODKEY|ShiftMask,             XK_s,          spawn,                  SHCMD("flameshot gui -p $HOME") },
+	{ MODKEY|ShiftMask,             XK_l,          spawn,                  SHCMD("slock") },
+	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  SHCMD("st -e tmux") },
+	{ MODKEY|ShiftMask,             XK_x,          spawn,                  SHCMD("$HOME/gdrive-pessoal/pessoal/programação/arch-setup/scripts-dmenu/prompt.sh 'Você quer desligar?' 'shutdown now'") },
+	{ MODKEY,                       XK_w,          spawn,                  SHCMD("/usr/local/bin/brave-pessoal") },
+	{ MODKEY|ShiftMask,             XK_w,          spawn,                  SHCMD("/usr/local/bin/brave-eureciclo") },
+	{ MODKEY,                       XK_n,          spawn,                  SHCMD("/usr/local/bin/notas") },
+	{ MODKEY|ShiftMask,             XK_n,          spawn,                  SHCMD("obsidian") },
+	{ MODKEY,                       XK_v,          spawn,                  SHCMD("cd $HOME | fd -H -tf . | dmenu -i -l 50 | xargs st -e $EDITOR") },
+	/* modifier                     key            function                argument */
 	{ MODKEY,                       XK_b,          togglebar,              {0} },
 	{ MODKEY,                       XK_j,          focusstack,             {.i = +1 } },
 	{ MODKEY,                       XK_k,          focusstack,             {.i = -1 } },
@@ -220,20 +252,41 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_j,          movestack,              {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,          movestack,              {.i = -1 } },
 	{ MODKEY,                       XK_Return,     zoom,                   {0} },
+	{ MODKEY|Mod4Mask,              XK_u,          incrgaps,               {.i = +1 } },
+	{ MODKEY|Mod4Mask|ShiftMask,    XK_u,          incrgaps,               {.i = -1 } },
+	{ MODKEY|Mod4Mask,              XK_i,          incrigaps,              {.i = +1 } },
+	{ MODKEY|Mod4Mask|ShiftMask,    XK_i,          incrigaps,              {.i = -1 } },
+	{ MODKEY|Mod4Mask,              XK_o,          incrogaps,              {.i = +1 } },
+	{ MODKEY|Mod4Mask|ShiftMask,    XK_o,          incrogaps,              {.i = -1 } },
+	{ MODKEY|Mod4Mask,              XK_6,          incrihgaps,             {.i = +1 } },
+	{ MODKEY|Mod4Mask|ShiftMask,    XK_6,          incrihgaps,             {.i = -1 } },
+	{ MODKEY|Mod4Mask,              XK_7,          incrivgaps,             {.i = +1 } },
+	{ MODKEY|Mod4Mask|ShiftMask,    XK_7,          incrivgaps,             {.i = -1 } },
+	{ MODKEY|Mod4Mask,              XK_8,          incrohgaps,             {.i = +1 } },
+	{ MODKEY|Mod4Mask|ShiftMask,    XK_8,          incrohgaps,             {.i = -1 } },
+	{ MODKEY|Mod4Mask,              XK_9,          incrovgaps,             {.i = +1 } },
+	{ MODKEY|Mod4Mask|ShiftMask,    XK_9,          incrovgaps,             {.i = -1 } },
+	{ MODKEY|Mod4Mask,              XK_0,          togglegaps,             {0} },
+	{ MODKEY|Mod4Mask|ShiftMask,    XK_0,          defaultgaps,            {0} },
 	{ MODKEY,                       XK_Tab,        view,                   {0} },
 	{ MODKEY|ShiftMask,             XK_c,          killclient,             {0} },
 	{ MODKEY|ShiftMask,             XK_q,          quit,                   {0} },
+	{ 0,                            HOLDKEY,       holdbar,                {0} },
 	{ MODKEY,                       XK_t,          setlayout,              {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,          setlayout,              {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,          setlayout,              {.v = &layouts[2]} },
+	{ MODKEY,                       XK_g,          setlayout,              {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,      setlayout,              {0} },
 	{ MODKEY|ShiftMask,             XK_space,      togglefloating,         {0} },
+	{ MODKEY,                       XK_y,          togglefullscreen,       {0} },
 	{ MODKEY,                       XK_0,          view,                   {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,          tag,                    {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,      focusmon,               {.i = -1 } },
 	{ MODKEY,                       XK_period,     focusmon,               {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,      tagmon,                 {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period,     tagmon,                 {.i = +1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_comma,      tagallmon,              {.i = +1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_period,     tagallmon,              {.i = -1 } },
 	TAGKEYS(                        XK_1,                                  0)
 	TAGKEYS(                        XK_2,                                  1)
 	TAGKEYS(                        XK_3,                                  2)

@@ -220,6 +220,10 @@ struct Monitor {
 	int num;
 	int mx, my, mw, mh;   /* screen size */
 	int wx, wy, ww, wh;   /* window area  */
+	int gappih;           /* horizontal gap between windows */
+	int gappiv;           /* vertical gap between windows */
+	int gappoh;           /* horizontal outer gaps */
+	int gappov;           /* vertical outer gaps */
 	unsigned int seltags;
 	unsigned int sellt;
 	unsigned int tagset[2];
@@ -368,6 +372,7 @@ static int (*xerrorxlib)(Display *, XErrorEvent *);
 static unsigned int numlockmask = 0;
 static void (*handler[LASTEvent]) (XEvent *) = {
 	[ButtonPress] = buttonpress,
+	[ButtonRelease] = keyrelease,
 	[ClientMessage] = clientmessage,
 	[ConfigureRequest] = configurerequest,
 	[ConfigureNotify] = configurenotify,
@@ -376,6 +381,7 @@ static void (*handler[LASTEvent]) (XEvent *) = {
 	[Expose] = expose,
 	[FocusIn] = focusin,
 	[KeyPress] = keypress,
+	[KeyRelease] = keyrelease,
 	[MappingNotify] = mappingnotify,
 	[MapRequest] = maprequest,
 	[MotionNotify] = motionnotify,
@@ -806,6 +812,10 @@ createmon(void)
 	m->mfact = mfact;
 	m->nmaster = nmaster;
 	m->showbar = showbar;
+	m->gappih = gappih;
+	m->gappiv = gappiv;
+	m->gappoh = gappoh;
+	m->gappov = gappov;
 	for (mi = 0, mon = mons; mon; mon = mon->next, mi++); // monitor index
 	m->index = mi;
 	m->lt[0] = &layouts[0];
@@ -910,8 +920,10 @@ void
 drawbar(Monitor *m)
 {
 	Bar *bar;
-	for (bar = m->bar; bar; bar = bar->next)
-		drawbarwin(bar);
+	
+	if (m->showbar)
+		for (bar = m->bar; bar; bar = bar->next)
+			drawbarwin(bar);
 }
 
 void
@@ -1131,7 +1143,7 @@ focusstack(const Arg *arg)
 {
 	Client *c = NULL, *i;
 
-	if (!selmon->sel || selmon->sel->isfullscreen)
+	if (!selmon->sel || (selmon->sel->isfullscreen && lockfullscreen))
 		return;
 	if (arg->i > 0) {
 		for (c = selmon->sel->next; c && !ISVISIBLE(c); c = c->next);
@@ -1364,6 +1376,7 @@ manage(Window w, XWindowAttributes *wa)
 		setfullscreen(c, 1);
 	updatewmhints(c);
 
+
 	XSelectInput(dpy, w, EnterWindowMask|FocusChangeMask|PropertyChangeMask|StructureNotifyMask);
 	grabbuttons(c, 0);
 
@@ -1590,8 +1603,8 @@ resizeclient(Client *c, int x, int y, int w, int h)
 		&& !c->isfullscreen
 		&& !c->isfloating
 		&& c->mon->lt[c->mon->sellt]->arrange) {
-		wc.width += c->bw * 2;
-		wc.height += c->bw * 2;
+		c->w = wc.width += c->bw * 2;
+		c->h = wc.height += c->bw * 2;
 		wc.border_width = 0;
 	}
 	XConfigureWindow(dpy, c->win, CWX|CWY|CWWidth|CWHeight|CWBorderWidth, &wc);
@@ -1661,7 +1674,7 @@ resizemouse(const Arg *arg)
 void
 restack(Monitor *m)
 {
-	Client *c;
+	Client *c, *f = NULL;
 	XEvent ev;
 	XWindowChanges wc;
 
@@ -1670,11 +1683,17 @@ restack(Monitor *m)
 		return;
 	if (m->sel->isfloating || !m->lt[m->sellt]->arrange)
 		XRaiseWindow(dpy, m->sel->win);
-	if (m->lt[m->sellt]->arrange && m->bar) {
+	if (m->lt[m->sellt]->arrange) {
 		wc.stack_mode = Below;
-		wc.sibling = m->bar->win;
+		if (m->bar) {
+			wc.sibling = m->bar->win;
+		} else {
+			for (f = m->stack; f && (f->isfloating || !ISVISIBLE(f)); f = f->snext); // find first tiled stack client
+			if (f)
+				wc.sibling = f->win;
+		}
 		for (c = m->stack; c; c = c->snext)
-			if (!c->isfloating && ISVISIBLE(c)) {
+			if (!c->isfloating && ISVISIBLE(c) && c != f) {
 				XConfigureWindow(dpy, c->win, CWSibling|CWStackMode, &wc);
 				wc.sibling = c->win;
 			}
@@ -1844,6 +1863,9 @@ setup(void)
 	sigchld(0);
 
 
+	/* the one line of bloat that would have saved a lot of time for a lot of people */
+	putenv("_JAVA_AWT_WM_NONREPARENTING=1");
+
 	/* init screen */
 	screen = DefaultScreen(dpy);
 	sw = DisplayWidth(dpy, screen);
@@ -1989,7 +2011,7 @@ void
 togglebar(const Arg *arg)
 {
 	Bar *bar;
-	selmon->showbar = !selmon->showbar;
+	selmon->showbar = (selmon->showbar == 2 ? 1 : !selmon->showbar);
 	updatebarpos(selmon);
 	for (bar = selmon->bar; bar; bar = bar->next)
 		XMoveResizeWindow(dpy, bar->win, bar->bx, bar->by, bar->bw, bar->bh);
