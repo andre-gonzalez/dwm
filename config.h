@@ -230,6 +230,7 @@ static const char *termcmd[]  = { "st", NULL };
 
 
 static Key keys[] = {
+	/* modifier                     key            function                argument */
 	{ MODKEY,                       XK_p,          spawn,                  {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_v,          spawn,                  SHCMD("clipmenu") },
 	{ MODKEY|ShiftMask,             XK_s,          spawn,                  SHCMD("flameshot gui -p $HOME") },
@@ -241,7 +242,13 @@ static Key keys[] = {
 	{ MODKEY,                       XK_n,          spawn,                  SHCMD("/usr/local/bin/notas") },
 	{ MODKEY|ShiftMask,             XK_n,          spawn,                  SHCMD("obsidian") },
 	{ MODKEY,                       XK_v,          spawn,                  SHCMD("cd $HOME | fd -H -tf . | dmenu -i -l 50 | xargs st -e $EDITOR") },
-	/* modifier                     key            function                argument */
+	{ MODKEY,                       XK_v,          spawn,                  SHCMD("cd $HOME | fd -H -tf . | dmenu -i -l 50 | xargs st -e $EDITOR") },
+	{ MODKEY,                       XK_F7,         spawn,                  SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
+	{ MODKEY,                       XK_F8,         spawn,                  SHCMD("pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)") },
+	{ MODKEY,                       XK_F2,         spawn,                  SHCMD("brightnessctl set 5%-; kill -45 $(pidof dwmblocks)") },
+	{ MODKEY,                       XK_F3,         spawn,                  SHCMD("brightnessctl set +5%; kill -45 $(pidof dwmblocks)") },
+	{ MODKEY,                       XK_F3,         spawn,                  SHCMD("brightnessctl set +5%; kill -45 $(pidof dwmblocks)") },
+	{ MODKEY|ShiftMask,             XK_b,          spawn,                  SHCMD("bluetoothctl connect CC:98:8B:C1:5C:78; kill -46 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_b,          togglebar,              {0} },
 	{ MODKEY,                       XK_j,          focusstack,             {.i = +1 } },
 	{ MODKEY,                       XK_k,          focusstack,             {.i = -1 } },
