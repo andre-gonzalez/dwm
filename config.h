@@ -6,7 +6,7 @@ static const unsigned int snap           = 32;  /* snap pixel */
 static const unsigned int gappih         = 2;  /* horiz inner gap between windows */
 static const unsigned int gappiv         = 2;  /* vert inner gap between windows */
 static const unsigned int gappoh         = 70;  /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov         = 20;  /* vert outer gap between windows and screen edge */
+static const unsigned int gappov         = 0;  /* vert outer gap between windows and screen edge */
 static const int smartgaps_fact          = 1;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
 static const int showbar                 = 0;   /* 0 means no bar */
 static const int topbar                  = 1;   /* 0 means bottom bar */
