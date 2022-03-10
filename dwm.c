@@ -420,7 +420,11 @@ applyrules(Client *c)
 	c->isfloating = 0;
 	c->tags = 0;
 	XGetClassHint(dpy, c->win, &ch);
-	class    = ch.res_class ? ch.res_class : broken;
+	if (0 == system("[ $(ps -o etimes= -p $(pgrep -o spotify)) -lt 3 ]")) {
+		class    = ch.res_class ? ch.res_class : "Spotify";
+	} else {
+		class    = ch.res_class ? ch.res_class : broken;
+	}
 	instance = ch.res_name  ? ch.res_name  : broken;
 	wintype  = getatomprop(c, netatom[NetWMWindowType]);
 
@@ -920,7 +924,7 @@ void
 drawbar(Monitor *m)
 {
 	Bar *bar;
-	
+
 	if (m->showbar)
 		for (bar = m->bar; bar; bar = bar->next)
 			drawbarwin(bar);
