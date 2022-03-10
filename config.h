@@ -12,7 +12,7 @@
 /* static const int showbar                 = 0;   /1* 0 means no bar *1/ */
 /* static const int topbar                  = 1;   /1* 0 means bottom bar *1/ */
 /* With only laptop screen as monitor */
-static const unsigned int borderpx       = 3;   /* border pixel of windows */
+static const unsigned int borderpx       = 4;   /* border pixel of windows */
 static const unsigned int snap           = 32;  /* snap pixel */
 static const unsigned int gappih         = 4;  /* horiz inner gap between windows */
 static const unsigned int gappiv         = 4;  /* vert inner gap between windows */
