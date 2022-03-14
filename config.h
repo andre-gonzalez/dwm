@@ -2,25 +2,26 @@
 
 /* appearance */
 		/* with TV as second monitor */
-/* static const unsigned int borderpx       = 1;   /1* border pixel of windows *1/ */
+static const unsigned int borderpx       = 3;   /* border pixel of windows */
+static const unsigned int snap           = 32;  /* snap pixel */
+static const unsigned int gappih         = 0;  /* horiz inner gap between windows */
+static const unsigned int gappiv         = 0;  /* vert inner gap between windows */
+static const unsigned int gappoh         = 70;  /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov         = 0;  /* vert outer gap between windows and screen edge */
+static const int smartgaps_fact          = 1;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
+static const int showbar                 = 1;   /* 0 means no bar */
+static const int topbar                  = 1;   /* 0 means bottom bar */
+		/* With only laptop screen as monitor */
+/* static const unsigned int borderpx       = 4;   /1* border pixel of windows *1/ */
 /* static const unsigned int snap           = 32;  /1* snap pixel *1/ */
-/* static const unsigned int gappih         = 2;  /1* horiz inner gap between windows *1/ */
-/* static const unsigned int gappiv         = 2;  /1* vert inner gap between windows *1/ */
-/* static const unsigned int gappoh         = 70;  /1* horiz outer gap between windows and screen edge *1/ */
+/* static const unsigned int gappih         = 0;  /1* horiz inner gap between windows *1/ */
+/* static const unsigned int gappiv         = 0;  /1* vert inner gap between windows *1/ */
+/* static const unsigned int gappoh         = 0;  /1* horiz outer gap between windows and screen edge *1/ */
 /* static const unsigned int gappov         = 0;  /1* vert outer gap between windows and screen edge *1/ */
 /* static const int smartgaps_fact          = 1;   /1* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps *1/ */
 /* static const int showbar                 = 0;   /1* 0 means no bar *1/ */
 /* static const int topbar                  = 1;   /1* 0 means bottom bar *1/ */
-/* With only laptop screen as monitor */
-static const unsigned int borderpx       = 4;   /* border pixel of windows */
-static const unsigned int snap           = 32;  /* snap pixel */
-static const unsigned int gappih         = 0;  /* horiz inner gap between windows */
-static const unsigned int gappiv         = 0;  /* vert inner gap between windows */
-static const unsigned int gappoh         = 0;  /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov         = 0;  /* vert outer gap between windows and screen edge */
-static const int smartgaps_fact          = 1;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
-static const int showbar                 = 0;   /* 0 means no bar */
-static const int topbar                  = 1;   /* 0 means bottom bar */
+
 /* Status is to be shown on: -1 (all monitors), 0 (a specific monitor by index), 'A' (active monitor) */
 static const int statusmon               = 'A';
 
@@ -173,6 +174,7 @@ static const Rule rules[] = {
     {     "Spotify",      NULL,          NULL,  NULL,    1 << 6,    0,          -1 },
     {          NULL, "Spotify",          NULL,  NULL,    1 << 6,    0,          -1 },
     {          NULL,      NULL,     "Spotify",  NULL,    1 << 6,    0,          -1 },
+    {          NULL,      NULL,      "videos",  NULL,    1 << 6,    0,          -1 },
 };
 
 
@@ -265,6 +267,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F1,         spawn,                  SHCMD("playerctl play-pause") },
 	{ ControlMask|ShiftMask,        XK_Escape,     spawn,                  SHCMD("st -e htop") },
 	{ MODKEY|ShiftMask,             XK_a,          spawn,                  SHCMD("st -e pavucontrol") },
+	{ MODKEY,                       XK_z,          spawn,                  SHCMD("setxkbmap -layout us -variant dvorak-intl && setxkbmap -option caps:escape") },
+	{ MODKEY|ShiftMask,             XK_z,          spawn,                  SHCMD("setxkbmap -layout br ,abnt2 && setxkbmap -option caps:escape && setxkbmap -option kpdl:dot") },
 	{ MODKEY,                       XK_b,          togglebar,              {0} },
 	{ MODKEY,                       XK_j,          focusstack,             {.i = +1 } },
 	{ MODKEY,                       XK_k,          focusstack,             {.i = -1 } },
