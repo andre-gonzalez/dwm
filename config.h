@@ -263,7 +263,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F8,         spawn,                  SHCMD("pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_F2,         spawn,                  SHCMD("brightnessctl set 5%-; kill -45 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_F3,         spawn,                  SHCMD("brightnessctl set +5%; kill -45 $(pidof dwmblocks)") },
-	{ MODKEY|ShiftMask,             XK_b,          spawn,                  SHCMD("bluetoothctl connect CC:98:8B:C1:5C:78; kill -46 $(pidof dwmblocks)") },
+	{ MODKEY|ShiftMask,             XK_b,          spawn,                  SHCMD("bluetoothctl power on && bluetoothctl connect CC:98:8B:C1:5C:78; kill -46 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_F1,         spawn,                  SHCMD("playerctl play-pause") },
 	{ ControlMask|ShiftMask,        XK_Escape,     spawn,                  SHCMD("st -e htop") },
 	{ MODKEY|ShiftMask,             XK_a,          spawn,                  SHCMD("st -e pavucontrol") },
