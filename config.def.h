@@ -175,8 +175,6 @@ static const Rule rules[] = {
     {          NULL, "Spotify",          NULL,  NULL,    1 << 6,    0,          -1 },
     {          NULL,      NULL,     "Spotify",  NULL,    1 << 6,    0,          -1 },
     {          NULL,      NULL,      "videos",  NULL,    1 << 6,    0,          -1 },
-    {          NULL,      NULL, "qutebrowser",  NULL,    1 << 0,    0,          -1 },
-    { "qutebrowser",      NULL,          NULL,  NULL,    1 << 0,    0,          -1 },
 };
 
 
@@ -232,6 +230,8 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
+#define STATUSBAR "dwmblocks"
+
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {
@@ -252,7 +252,7 @@ static Key keys[] = {
 	/* modifier                     key            function                argument */
 	{ MODKEY,                       XK_p,          spawn,                  {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_v,          spawn,                  SHCMD("clipmenu") },
-	{ MODKEY|ShiftMask,             XK_s,          spawn,                  SHCMD("flameshot gui -c -p $HOME/gdrive-pessoal/downloads/screenshots/") },
+	{ MODKEY|ShiftMask,             XK_s,          spawn,                  SHCMD("flameshot gui -p $HOME") },
 	{ MODKEY|ShiftMask,             XK_l,          spawn,                  SHCMD("slock") },
 	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  SHCMD("st -e tmux") },
 	{ MODKEY|ShiftMask,             XK_x,          spawn,                  SHCMD("$HOME/gdrive-pessoal/pessoal/programação/arch-setup/scripts-dmenu/prompt.sh 'Você quer desligar?' 'shutdown now'") },
@@ -335,7 +335,9 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,                   Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,                   Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,                   Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,                   Button2,        spawn,          {.v = termcmd } },
++	{ ClkStatusText,        0,					 Button1,        sigstatusbar,   {.i = 1} },
++	{ ClkStatusText,        0,					 Button2,        sigstatusbar,   {.i = 2} },
++	{ ClkStatusText,        0,					 Button3,        sigstatusbar,   {.i = 3} },
 	{ ClkClientWin,         MODKEY,              Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,              Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,              Button3,        resizemouse,    {0} },
