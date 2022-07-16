@@ -9,6 +9,6 @@
   - holdbar
   - tagallmon
   - togglefullscreen
-  - statuscmd
-  - statuscmd_dwmblocks
+  - BAR_STATUSCMD_PATCH
+  - BAR_DWMBLOCKS_PATCH
 
