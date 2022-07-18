@@ -8,6 +8,7 @@ holdbar(const Arg *arg)
 	updatebarpos(selmon);
 	for (bar = selmon->bar; bar; bar = bar->next)
 		XMoveResizeWindow(dpy, bar->win, bar->bx, bar->by, bar->bw, bar->bh);
+	drawbar(selmon);
 }
 
 void

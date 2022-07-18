@@ -9,4 +9,6 @@
   - holdbar
   - tagallmon
   - togglefullscreen
+  - BAR_STATUSCMD_PATCH
+  - BAR_DWMBLOCKS_PATCH
 

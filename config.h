@@ -76,6 +76,7 @@ static char urgfloatcolor[]              = "#db8fd9";
 
 
 
+
 static char *colors[][ColCount] = {
 	/*                       fg                bg                border                float */
 	[SchemeNorm]         = { normfgcolor,      normbgcolor,      normbordercolor,      normfloatcolor },
@@ -194,11 +195,11 @@ static const Rule rules[] = {
  *    name - does nothing, intended for visual clue and for logging / debugging
  */
 static const BarRule barrules[] = {
-	/* monitor   bar    alignment         widthfunc                drawfunc                clickfunc                name */
-	{ -1,        0,     BAR_ALIGN_LEFT,   width_tags,              draw_tags,              click_tags,              "tags" },
-	{ -1,        0,     BAR_ALIGN_LEFT,   width_ltsymbol,          draw_ltsymbol,          click_ltsymbol,          "layout" },
-	{ statusmon, 0,     BAR_ALIGN_RIGHT,  width_status,            draw_status,            click_status,            "status" },
-	{ -1,        0,     BAR_ALIGN_NONE,   width_wintitle,          draw_wintitle,          click_wintitle,          "wintitle" },
+	/* monitor   bar    alignment         widthfunc                 drawfunc                clickfunc                hoverfunc                name */
+	{ -1,        0,     BAR_ALIGN_LEFT,   width_tags,               draw_tags,              click_tags,              hover_tags,              "tags" },
+	{ -1,        0,     BAR_ALIGN_LEFT,   width_ltsymbol,           draw_ltsymbol,          click_ltsymbol,          NULL,                    "layout" },
+	{ statusmon, 0,     BAR_ALIGN_RIGHT,  width_status,             draw_status,            click_statuscmd,         NULL,                    "status" },
+	{ -1,        0,     BAR_ALIGN_NONE,   width_wintitle,           draw_wintitle,          click_wintitle,          NULL,                    "wintitle" },
 };
 
 /* layout(s) */
@@ -246,11 +247,13 @@ static const char *dmenucmd[] = {
 };
 static const char *termcmd[]  = { "st", NULL };
 
-
+/* This defines the name of the executable that handles the bar (used for signalling purposes) */
+#define STATUSBAR "dwmblocks"
 
 static Key keys[] = {
 	/* modifier                     key            function                argument */
 	{ MODKEY,                       XK_p,          spawn,                  {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_v,          spawn,                  SHCMD("clipmenu") },
 	{ MODKEY|ShiftMask,             XK_s,          spawn,                  SHCMD("flameshot gui -c -p $HOME/gdrive-pessoal/downloads/screenshots/") },
 	{ MODKEY|ShiftMask,             XK_l,          spawn,                  SHCMD("slock") },
@@ -304,7 +307,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,          setlayout,              {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,          setlayout,              {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,          setlayout,              {.v = &layouts[2]} },
-	{ MODKEY,                       XK_g,          setlayout,              {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,      setlayout,              {0} },
 	{ MODKEY|ShiftMask,             XK_space,      togglefloating,         {0} },
 	{ MODKEY,                       XK_y,          togglefullscreen,       {0} },
@@ -314,8 +316,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period,     focusmon,               {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,      tagmon,                 {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period,     tagmon,                 {.i = +1 } },
-	{ MODKEY|Mod1Mask|ShiftMask,    XK_comma,      tagallmon,              {.i = +1 } },
-	{ MODKEY|Mod1Mask|ShiftMask,    XK_period,     tagallmon,              {.i = -1 } },
+	{ MODKEY|Mod4Mask|ShiftMask,    XK_comma,      tagallmon,              {.i = +1 } },
+	{ MODKEY|Mod4Mask|ShiftMask,    XK_period,     tagallmon,              {.i = -1 } },
 	TAGKEYS(                        XK_1,                                  0)
 	TAGKEYS(                        XK_2,                                  1)
 	TAGKEYS(                        XK_3,                                  2)
@@ -335,7 +337,9 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,                   Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,                   Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,                   Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,                   Button2,        spawn,          {.v = termcmd } },
+	{ ClkStatusText,        0,                   Button1,        sigstatusbar,   {.i = 1 } },
+	{ ClkStatusText,        0,                   Button2,        sigstatusbar,   {.i = 2 } },
+	{ ClkStatusText,        0,                   Button3,        sigstatusbar,   {.i = 3 } },
 	{ ClkClientWin,         MODKEY,              Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,              Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,              Button3,        resizemouse,    {0} },
@@ -344,6 +348,5 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,              Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,              Button3,        toggletag,      {0} },
 };
-
 
 
