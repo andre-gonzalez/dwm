@@ -245,7 +245,7 @@ static const char *dmenucmd[] = {
 	"-sf", selfgcolor,
 	NULL
 };
-static const char *termcmd[]  = { "st", NULL };
+/* static const char *termcmd[]  = { "st", NULL }; */
 
 /* This defines the name of the executable that handles the bar (used for signalling purposes) */
 #define STATUSBAR "dwmblocks"
@@ -253,7 +253,7 @@ static const char *termcmd[]  = { "st", NULL };
 static Key keys[] = {
 	/* modifier                     key            function                argument */
 	{ MODKEY,                       XK_p,          spawn,                  {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = termcmd } },
+	/* { MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = termcmd } }, */
 	{ MODKEY|ShiftMask,             XK_v,          spawn,                  SHCMD("clipmenu") },
 	{ MODKEY|ShiftMask,             XK_s,          spawn,                  SHCMD("flameshot gui -c -p $HOME/gdrive-pessoal/downloads/screenshots/") },
 	{ MODKEY|ShiftMask,             XK_l,          spawn,                  SHCMD("slock") },
