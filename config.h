@@ -178,6 +178,7 @@ static const Rule rules[] = {
     {          NULL,      NULL,      "videos",  NULL,    1 << 6,    0,          -1 },
     {          NULL,      NULL, "qutebrowser",  NULL,    1 << 0,    0,          -1 },
     { "qutebrowser",      NULL,          NULL,  NULL,    1 << 0,    0,          -1 },
+    {          NULL,      NULL,    "WhatsApp",  NULL,    1 << 7,    0,          -1 },
 };
 
 
