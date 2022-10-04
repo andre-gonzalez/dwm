@@ -158,8 +158,8 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
     //        class   instance         title wintype   tags mask isfloating  monitor
-    {     "DBeaver",      NULL,          NULL,  NULL,    1 << 2,    0,          -1 },
-    {          NULL,      NULL,     "Dbeaver",  NULL,    1 << 2,    0,          -1 },
+    {     "DBeaver",      NULL,          NULL,  NULL,    1 << 8,    0,          -1 },
+    {          NULL,      NULL,     "Dbeaver",  NULL,    1 << 8,    0,          -1 },
     {       "Slack",      NULL,          NULL,  NULL,    1 << 1,    0,          -1 },
     {    "obsidian",      NULL,          NULL,  NULL,    1 << 1,    0,          -1 },
     {"Virt-manager",      NULL,          NULL,  NULL,    1 << 4,    0,          -1 },
