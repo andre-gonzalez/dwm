@@ -245,7 +245,7 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = termcmd } }, */
 	{ MODKEY|ShiftMask,             XK_v,          spawn,                  SHCMD("clipmenu") },
 	{ MODKEY|ShiftMask,             XK_s,          spawn,                  SHCMD("flameshot gui -c -p $HOME/gdrive-pessoal/downloads/screenshots/") },
-	{ MODKEY|ControlMask,           XK_s,          spawn,                  SHCMD("NOME=$(cat '' | dmenu)  && flameshot gui -c -p $HOME/$NOME && echo \"$NOME\" | xclip") },
+	{ MODKEY|ControlMask,           XK_s,          spawn,                  SHCMD("NOME=$(cat '' | dmenu)  && flameshot gui -c -p $HOME/gdrive-pessoal/pessoal/obsidian/_attachment/$NOME && echo \"$NOME\" | xclip") },
 	{ MODKEY|ShiftMask,             XK_l,          spawn,                  SHCMD("slock") },
 	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  SHCMD("st -e tmux") },
 	{ MODKEY|ShiftMask,             XK_x,          spawn,                  SHCMD("$HOME/gdrive-pessoal/pessoal/programação/arch-setup/scripts-dmenu/prompt.sh 'Você quer desligar?' 'shutdown now'") },
