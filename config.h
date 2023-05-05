@@ -252,7 +252,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_x,          spawn,                  SHCMD("$HOME/gdrive-pessoal/pessoal/programação/arch-setup/scripts-dmenu/prompt.sh 'Você quer desligar?' 'shutdown now'") },
 	{ MODKEY,                       XK_w,          spawn,                  SHCMD("/usr/local/bin/brave-pessoal") },
 	{ MODKEY|ShiftMask,             XK_w,          spawn,                  SHCMD("/usr/local/bin/brave-eureciclo") },
-	{ MODKEY,                       XK_n,          spawn,                  SHCMD("/usr/local/bin/notas") },
 	{ MODKEY|ShiftMask,             XK_n,          spawn,                  SHCMD("obsidian") },
 	{ MODKEY,                       XK_v,          spawn,                  SHCMD("cd $HOME | fd -H -tf . | dmenu -i -l 50 | xargs st -e $EDITOR") },
 	{ MODKEY,                       XK_F7,         spawn,                  SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
