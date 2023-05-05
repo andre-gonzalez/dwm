@@ -267,7 +267,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_a,          spawn,                  SHCMD("st -e pavucontrol") },
 	{ MODKEY,                       XK_z,          spawn,                  SHCMD("setxkbmap -layout us -variant dvorak-intl && setxkbmap -option caps:escape") },
 	{ MODKEY,                       XK_Z,          spawn,                  SHCMD("setxkbmap -layout us -variant dvorak-intl && setxkbmap -option caps:escape") },
-	{ MODKEY|ShiftMask,             XK_z,          spawn,                  SHCMD("setxkbmap -layout br ,abnt2 && setxkbmap -option caps:escape && setxkbmap -option kpdl:dot") },
 	{ MODKEY,                       XK_o,          spawn,                  SHCMD("/$HOME/.scripts/web") },
 	{ MODKEY,                       XK_a,          spawn,                  SHCMD("/$HOME/.scripts/todo") },
 	{ MODKEY,                       XK_b,          togglebar,              {0} },
