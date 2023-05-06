@@ -248,7 +248,6 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_s,          spawn,                  SHCMD("$HOME/.scripts/print-to-markdown-note") },
 	{ MODKEY|ShiftMask,             XK_l,          spawn,                  SHCMD("slock") },
 	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  SHCMD("st -e tmux") },
-	{ MODKEY|ShiftMask,             XK_x,          spawn,                  SHCMD("$HOME/gdrive-pessoal/pessoal/programação/arch-setup/scripts-dmenu/prompt.sh 'Você quer desligar?' 'shutdown now'") },
 	{ MODKEY,                       XK_w,          spawn,                  SHCMD("/usr/local/bin/brave-pessoal") },
 	{ MODKEY|ShiftMask,             XK_w,          spawn,                  SHCMD("/usr/local/bin/brave-eureciclo") },
 	{ MODKEY|ShiftMask,             XK_n,          spawn,                  SHCMD("obsidian") },
