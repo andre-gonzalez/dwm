@@ -151,7 +151,6 @@ static const Rule rules[] = {
     {         "Slack",             NULL,          NULL,  NULL,    1 << 1,    0,          -1 },
     {      "obsidian",             NULL,          NULL,  NULL,    1 << 1,    0,          -1 },
     {  "Virt-manager",             NULL,          NULL,  NULL,    1 << 4,    0,          -1 },
-    {            NULL,             NULL,       "notas",  NULL,    1 << 1,    0,          -1 },
     {            NULL,             NULL,    "terminal",  NULL,    1 << 2,    0,          -1 },
     {            NULL,             NULL,    "database",  NULL,    1 << 3,    0,          -1 },
     {            NULL,             NULL,   "eureciclo",  NULL,    1 << 3,    0,          -1 },
