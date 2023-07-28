@@ -170,6 +170,7 @@ static const Rule rules[] = {
     {       "DBeaver",             NULL,             NULL,  NULL,    1 << 8,    0,           0 },
     {            NULL,             NULL,        "Dbeaver",  NULL,    1 << 8,    0,           0 },
 		{            NULL,             NULL, "Pritunl Client",  NULL,    1 << 8,    0,           1 },
+		{            NULL,             NULL, "Extension: (Bitwarden - Free Password Manager) - Bitwarden — Mozilla Firefox",  NULL,    1 << 8,    0,           1 },
 };
 
 
