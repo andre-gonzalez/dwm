@@ -151,6 +151,7 @@ static const Rule rules[] = {
     {   "qutebrowser",             NULL,             NULL,  NULL,    1 << 0,    0,           0 },
     {            NULL,             NULL,     "monitoring",  NULL,    1 << 0,    0,           1 },
     {         "Slack",             NULL,             NULL,  NULL,    1 << 1,    0,           0 },
+    {         "Zulip",             NULL,             NULL,  NULL,    1 << 1,    0,           0 },
     {            NULL,             NULL,       "terminal",  NULL,    1 << 2,    0,           0 },
 		{            NULL,             NULL,    "LibreOffice",  NULL,    1 << 2,    0,           0 },
     {            NULL,             NULL,       "database",  NULL,    1 << 3,    0,           0 },
