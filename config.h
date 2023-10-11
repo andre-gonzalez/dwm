@@ -271,6 +271,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Z,          spawn,                  SHCMD("setxkbmap -layout us -variant dvorak-intl && setxkbmap -option caps:escape") },
 	{ MODKEY,                       XK_o,          spawn,                  SHCMD("/$HOME/.scripts/web") },
 	{ MODKEY,                       XK_a,          spawn,                  SHCMD("/$HOME/.scripts/todo") },
+	{ MODKEY|ControlMask,           XK_a,          spawn,                  SHCMD("authy") },
 	{ MODKEY,                       XK_b,          togglebar,              {0} },
 	{ MODKEY,                       XK_j,          focusstack,             {.i = +1 } },
 	{ MODKEY,                       XK_k,          focusstack,             {.i = -1 } },
