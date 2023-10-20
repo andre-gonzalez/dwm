@@ -169,7 +169,7 @@ static const Rule rules[] = {
     {                 NULL,             NULL,        "Spotify",  NULL,    1 << 6,    0,           1 },
     {                 NULL,             NULL,         "videos",  NULL,    1 << 6,    0,           1 },
     {                 NULL,             NULL,       "WhatsApp",  NULL,    1 << 7,    0,           1 },
-    {            "DBeaver",             NULL,             NULL,  NULL,    1 << 8,    0,           0 },
+    {            "DBeaver",             NULL,             NULL,  NULL,    1 << 7,    0,           0 },
     {                 NULL,             NULL,        "Dbeaver",  NULL,    1 << 8,    0,           0 },
     {           "VSCodium",             NULL,             NULL,  NULL,    1 << 8,    0,           0 },
 		{                 NULL,             NULL, "Pritunl Client",  NULL,    1 << 8,    0,           1 },
