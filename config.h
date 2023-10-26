@@ -174,6 +174,7 @@ static const Rule rules[] = {
     {           "VSCodium",             NULL,             NULL,  NULL,    1 << 8,    0,           0 },
 		{                 NULL,             NULL, "Pritunl Client",  NULL,    1 << 8,    0,           1 },
 		{                 NULL,             NULL,      "Bitwarden",  NULL,    1 << 8,    0,           1 },
+		{           "Clockify",             NULL,             NULL,  NULL,    1 << 8,    0,           1 },
 };
 
 
