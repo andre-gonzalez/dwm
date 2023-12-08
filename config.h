@@ -250,6 +250,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,          spawn,                  {.v = dmenucmd } },
 	/* { MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = termcmd } }, */
 	{ MODKEY|ShiftMask,             XK_v,          spawn,                  SHCMD("clipmenu") },
+	{ MODKEY|ControlMask,           XK_v,          spawn,                  SHCMD("/$HOME/.scripts/copy-to-clipboard.sh ") },
 	{ MODKEY|ShiftMask,             XK_s,          spawn,                  SHCMD("flameshot gui -c -p $HOME/gdrive-pessoal/downloads/screenshots/") },
 	{ MODKEY|ControlMask,           XK_s,          spawn,                  SHCMD("$HOME/.scripts/print-to-markdown-note") },
 	{ MODKEY|ShiftMask,             XK_l,          spawn,                  SHCMD("slock") },
