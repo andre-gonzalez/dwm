@@ -160,7 +160,7 @@ static const Rule rules[] = {
     {       "Virt-manager",             NULL,             NULL,  NULL,    1 << 4,    0,           0 },
     {"org.remmina.Remmina",             NULL,             NULL,  NULL,    1 << 4,    0,           0 },
     {               "Anki",             NULL,             NULL,  NULL,    1 << 5,    0,           0 },
-    {                 NULL,             NULL,           "call",  NULL,    1 << 5,    0,           1 },
+    {                 NULL,             NULL,           "call",  NULL,    1 << 5,    0,           0 },
     {                 NULL, "DesktopEditors",             NULL,  NULL,    1 << 5,    0,           0 },
     {                 NULL,             NULL,     "Portmaster",  NULL,    1 << 5,    0,           1 },
     {            "firefox",             NULL,             NULL,  NULL,    1 << 5,    0,           0 },
@@ -170,11 +170,11 @@ static const Rule rules[] = {
     {                 NULL,             NULL,         "videos",  NULL,    1 << 6,    0,           1 },
     {                 NULL,             NULL,       "WhatsApp",  NULL,    1 << 7,    0,           1 },
     {            "DBeaver",             NULL,             NULL,  NULL,    1 << 7,    0,           0 },
-    {                 NULL,             NULL,        "Dbeaver",  NULL,    1 << 8,    0,           0 },
+    {                 NULL,             NULL,        "Dbeaver",  NULL,    1 << 7,    0,           0 },
     {           "VSCodium",             NULL,             NULL,  NULL,    1 << 8,    0,           0 },
-		{                 NULL,             NULL, "Pritunl Client",  NULL,    1 << 8,    0,           1 },
-		{                 NULL,             NULL,      "Bitwarden",  NULL,    1 << 8,    0,           1 },
-		{           "Clockify",             NULL,             NULL,  NULL,    1 << 8,    0,           1 },
+	{                 NULL,             NULL, "Pritunl Client",  NULL,    1 << 8,    0,           0 },
+	{                 NULL,             NULL,      "Bitwarden",  NULL,    1 << 8,    0,           0 },
+	{           "Clockify",             NULL,             NULL,  NULL,    1 << 8,    0,           1 },
 };
 
 
