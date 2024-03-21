@@ -167,7 +167,6 @@ static const Rule rules[] = {
     {            "Spotify",             NULL,             NULL,  NULL,    1 << 6,    0,           1 },
     {                 NULL,        "Spotify",             NULL,  NULL,    1 << 6,    0,           1 },
     {                 NULL,             NULL,        "Spotify",  NULL,    1 << 6,    0,           1 },
-    {                "mpv",             NULL,             NULL,  NULL,    1 << 6,    0,           1 },
     {                 NULL,             NULL,         "videos",  NULL,    1 << 6,    0,           1 },
     {                 NULL,             NULL,       "WhatsApp",  NULL,    1 << 7,    0,           1 },
     {            "DBeaver",             NULL,             NULL,  NULL,    1 << 7,    0,           0 },
