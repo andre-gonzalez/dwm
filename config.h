@@ -1,6 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
-static const unsigned int borderpx       = 6;   /* border pixel of windows */
+static const unsigned int borderpx       = 4;   /* border pixel of windows */
 static const unsigned int snap           = 32;  /* snap pixel */
 static const unsigned int gappih         = 0;  /* horiz inner gap between windows */
 static const unsigned int gappiv         = 0;  /* vert inner gap between windows */
