@@ -269,7 +269,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_F3,         spawn,                  SHCMD("brightnessctl set +1%; kill -45 $(pidof dwmblocks)") },
 	{ MODKEY|ShiftMask,             XK_b,          spawn,                  SHCMD("bluetoothctl power on && bluetoothctl connect CC:98:8B:C1:5C:78; kill -46 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_F1,         spawn,                  SHCMD("playerctl play-pause") },
-	{ ControlMask|ShiftMask,        XK_Escape,     spawn,                  SHCMD("st -e htop") },
+	{ ControlMask|ShiftMask,        XK_Escape,     spawn,                  SHCMD("st -e btop") },
 	{ MODKEY|ShiftMask,             XK_a,          spawn,                  SHCMD("st -e pavucontrol") },
 	{ MODKEY,                       XK_z,          spawn,                  SHCMD("setxkbmap -layout us -variant dvorak-intl && setxkbmap -option caps:escape") },
 	{ MODKEY,                       XK_Z,          spawn,                  SHCMD("setxkbmap -layout us -variant dvorak-intl && setxkbmap -option caps:escape") },
