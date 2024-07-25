@@ -1,6 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
-static const unsigned int borderpx       = 4;   /* border pixel of windows */
+static const unsigned int borderpx       = 3;   /* border pixel of windows */
 static const unsigned int snap           = 32;  /* snap pixel */
 static const unsigned int gappih         = 0;  /* horiz inner gap between windows */
 static const unsigned int gappiv         = 0;  /* vert inner gap between windows */
@@ -17,8 +17,8 @@ static const int statusmon               = 'A';
 static int tagindicatortype              = INDICATOR_TOP_LEFT_SQUARE;
 static int tiledindicatortype            = INDICATOR_NONE;
 static int floatindicatortype            = INDICATOR_TOP_LEFT_SQUARE;
-static const char *fonts[]               = { "Liberation Mono:size=10" };
-static const char dmenufont[]            = "Liberation Mono:size=10";
+static const char *fonts[]               = { "Liberation Mono:size=9" };
+static const char dmenufont[]            = "Liberation Mono:size=9";
 
 static char c000000[]                    = "#000000"; // placeholder value
 
@@ -267,12 +267,13 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_F3,         spawn,                  SHCMD("brightnessctl set +1%; kill -45 $(pidof dwmblocks)") },
 	{ MODKEY|ShiftMask,             XK_b,          spawn,                  SHCMD("bluetoothctl power on && bluetoothctl connect CC:98:8B:C1:5C:78; kill -46 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_F1,         spawn,                  SHCMD("playerctl play-pause") },
-	{ ControlMask|ShiftMask,        XK_Escape,     spawn,                  SHCMD("st -e htop") },
+	{ ControlMask|ShiftMask,        XK_Escape,     spawn,                  SHCMD("st -e btop") },
 	{ MODKEY|ShiftMask,             XK_a,          spawn,                  SHCMD("st -e pavucontrol") },
 	{ MODKEY,                       XK_z,          spawn,                  SHCMD("setxkbmap -layout us -variant dvorak-intl && setxkbmap -option caps:escape") },
 	{ MODKEY,                       XK_Z,          spawn,                  SHCMD("setxkbmap -layout us -variant dvorak-intl && setxkbmap -option caps:escape") },
 	{ MODKEY,                       XK_o,          spawn,                  SHCMD("/$HOME/.scripts/web") },
 	{ MODKEY,                       XK_a,          spawn,                  SHCMD("/$HOME/.scripts/todo") },
+	{ MODKEY,                       XK_c,          spawn,                  SHCMD("/$HOME/.scripts/calc") },
 	{ MODKEY,                       XK_b,          togglebar,              {0} },
 	{ MODKEY,                       XK_j,          focusstack,             {.i = +1 } },
 	{ MODKEY,                       XK_k,          focusstack,             {.i = -1 } },
