@@ -147,13 +147,13 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
     //           class          instance            title wintype    tags mask isfloating  monitor
     {                 NULL,             NULL,        "pessoal",  NULL,    1 << 0,    0,          -1 },
-    {                 NULL,             NULL,    "qutebrowser",  NULL,    1 << 0,    0,          -1 },
-    {        "qutebrowser",             NULL,             NULL,  NULL,    1 << 0,    0,          -1 },
+    {        "qutebrowser",      "eureciclo",             NULL,  NULL,    1 << 3,    0,           0 },
+    {        "qutebrowser",    "qutebrowser",             NULL,  NULL,    1 << 0,    0,           0 },
     {              "Slack",             NULL,             NULL,  NULL,    1 << 1,    0,          -1 },
     {              "Zulip",             NULL,             NULL,  NULL,    1 << 1,    0,          -1 },
     {            "Ferdium",             NULL,             NULL,  NULL,    1 << 1,    0,          -1 },
     {                 NULL,             NULL,       "terminal",  NULL,    1 << 2,    0,          -1 },
-		{                 NULL,             NULL,    "LibreOffice",  NULL,    1 << 2,    0,          -1 },
+	{                 NULL,             NULL,    "LibreOffice",  NULL,    1 << 2,    0,          -1 },
     {                 NULL,             NULL,       "database",  NULL,    1 << 3,    0,          -1 },
     {                 NULL,             NULL,      "eureciclo",  NULL,    1 << 3,    0,          -1 },
     {       "Virt-manager",             NULL,             NULL,  NULL,    1 << 4,    0,          -1 },
