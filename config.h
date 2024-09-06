@@ -147,7 +147,6 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
     //           class          instance            title wintype    tags mask isfloating  monitor
     {                 NULL,             NULL,        "pessoal",  NULL,    1 << 0,    0,           0 },
-    {        "qutebrowser",      "eureciclo",             NULL,  NULL,    1 << 3,    0,           0 },
     {        "qutebrowser",    "qutebrowser",             NULL,  NULL,    1 << 0,    0,           0 },
     {                 NULL,             NULL,     "monitoring",  NULL,    1 << 0,    0,           1 },
     {              "Slack",             NULL,             NULL,  NULL,    1 << 1,    0,           0 },
@@ -156,6 +155,7 @@ static const Rule rules[] = {
     {                 NULL,             NULL,       "terminal",  NULL,    1 << 2,    0,           0 },
 	{                 NULL,             NULL,    "LibreOffice",  NULL,    1 << 2,    0,           0 },
     {                 NULL,             NULL,       "database",  NULL,    1 << 3,    0,           0 },
+    {        "qutebrowser",      "eureciclo",             NULL,  NULL,    1 << 3,    0,           0 },
     {       "Virt-manager",             NULL,             NULL,  NULL,    1 << 4,    0,           0 },
     {"org.remmina.Remmina",             NULL,             NULL,  NULL,    1 << 4,    0,           0 },
     {               "Anki",             NULL,             NULL,  NULL,    1 << 5,    0,           0 },
@@ -163,6 +163,7 @@ static const Rule rules[] = {
     {                 NULL, "DesktopEditors",             NULL,  NULL,    1 << 5,    0,           0 },
     {                 NULL,             NULL,     "Portmaster",  NULL,    1 << 5,    0,           1 },
     {            "firefox",             NULL,             NULL,  NULL,    1 << 5,    0,           0 },
+    {        "qutebrowser",           "call",             NULL,  NULL,    1 << 5,    0,           0 },
     {            "Spotify",             NULL,             NULL,  NULL,    1 << 6,    0,           1 },
     {                 NULL,        "Spotify",             NULL,  NULL,    1 << 6,    0,           1 },
     {                 NULL,             NULL,        "Spotify",  NULL,    1 << 6,    0,           1 },
