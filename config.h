@@ -162,6 +162,7 @@ static const Rule rules[] = {
     {                 NULL,             NULL,           "call",  NULL,    1 << 5,    0,          -1 },
     {                 NULL, "DesktopEditors",             NULL,  NULL,    1 << 5,    0,          -1 },
     {                 NULL,             NULL,     "Portmaster",  NULL,    1 << 5,    0,          -1 },
+    {        "qutebrowser",           "call",             NULL,  NULL,    1 << 5,    0,           0 },
     {            "Spotify",             NULL,             NULL,  NULL,    1 << 6,    0,          -1 },
     {                 NULL,        "Spotify",             NULL,  NULL,    1 << 6,    0,          -1 },
     {                 NULL,             NULL,        "Spotify",  NULL,    1 << 6,    0,          -1 },
