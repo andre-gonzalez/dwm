@@ -1,6 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
-static const unsigned int borderpx       = 4;   /* border pixel of windows */
+static const unsigned int borderpx       = 2;   /* border pixel of windows */
 static const unsigned int snap           = 32;  /* snap pixel */
 static const unsigned int gappih         = 0;  /* horiz inner gap between windows */
 static const unsigned int gappiv         = 0;  /* vert inner gap between windows */
@@ -17,8 +17,8 @@ static const int statusmon               = 'A';
 static int tagindicatortype              = INDICATOR_TOP_LEFT_SQUARE;
 static int tiledindicatortype            = INDICATOR_NONE;
 static int floatindicatortype            = INDICATOR_TOP_LEFT_SQUARE;
-static const char *fonts[]               = { "Liberation Mono:size=10" };
-static const char dmenufont[]            = "Liberation Mono:size=10";
+static const char *fonts[]               = { "Liberation Mono:size=7" };
+static const char dmenufont[]            = "Liberation Mono:size=7";
 
 static char c000000[]                    = "#000000"; // placeholder value
 
@@ -193,7 +193,7 @@ static const BarRule barrules[] = {
 	/* monitor   bar    alignment         widthfunc                 drawfunc                clickfunc                hoverfunc                name */
 	{ -1,        0,     BAR_ALIGN_LEFT,   width_tags,               draw_tags,              click_tags,              hover_tags,              "tags" },
 	{ -1,        0,     BAR_ALIGN_LEFT,   width_ltsymbol,           draw_ltsymbol,          click_ltsymbol,          NULL,                    "layout" },
-	{ statusmon, 0,     BAR_ALIGN_RIGHT,  width_status,             draw_status,            click_statuscmd,         NULL,                    "status" },
+	/* { statusmon, 0,     BAR_ALIGN_RIGHT,  width_status,             draw_status,            click_statuscmd,         NULL,                    "status" }, */
 	{ -1,        0,     BAR_ALIGN_NONE,   width_wintitle,           draw_wintitle,          click_wintitle,          NULL,                    "wintitle" },
 };
 
