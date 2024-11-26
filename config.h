@@ -174,6 +174,7 @@ static const Rule rules[] = {
 		{                 NULL,             NULL, "Pritunl Client",  NULL,    1 << 8,    0,          -1 },
 		{                 NULL,             NULL,      "Bitwarden",  NULL,    1 << 8,    0,          -1 },
 		{           "Clockify",             NULL,             NULL,  NULL,    1 << 8,    0,          -1 },
+	{                 NULL,             NULL,   "neovim-anywhere",  NULL,         0,    1,           0 },
 };
 
 
@@ -259,7 +260,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_w,          spawn,                  SHCMD("/usr/local/bin/brave-pessoal") },
 	{ MODKEY|ShiftMask,             XK_w,          spawn,                  SHCMD("/usr/local/bin/brave-eureciclo") },
 	{ MODKEY|ShiftMask,             XK_n,          spawn,                  SHCMD("obsidian") },
-	{ MODKEY,                       XK_v,          spawn,                  SHCMD("cd $HOME | fd -H -tf . | dmenu -i -l 50 | xargs st -e $EDITOR") },
+	{ MODKEY,                       XK_v,          spawn,                  SHCMD("neovim-anywhere.sh") },
 	{ MODKEY,                       XK_F7,         spawn,                  SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_F8,         spawn,                  SHCMD("pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_F2,         spawn,                  SHCMD("brightnessctl set 5%-; kill -45 $(pidof dwmblocks)") },
