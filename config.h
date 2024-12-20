@@ -150,14 +150,16 @@ static const Rule rules[] = {
     {        "qutebrowser",    "qutebrowser",                NULL,  NULL,    1 << 0,    0,           0 },
     {                 NULL,             NULL,        "monitoring",  NULL,    1 << 0,    0,           1 },
     {              "Slack",             NULL,                NULL,  NULL,    1 << 1,    0,           0 },
+    {                 NULL,             NULL,"Google Chat - Chat",  NULL,    1 << 1,    0,           0 },
+    {                 NULL,             NULL,       "google-chat",  NULL,    1 << 1,    0,           0 },
     {              "Zulip",             NULL,                NULL,  NULL,    1 << 1,    0,           0 },
     {            "Ferdium",             NULL,                NULL,  NULL,    1 << 1,    0,           1 },
-    {          "zen-alpha",             NULL,"Chat — Zen Browser",  NULL,    1 << 1,    0,           0 },
     {                 NULL,             NULL,          "terminal",  NULL,    1 << 2,    0,           0 },
 	{                 NULL,             NULL,       "LibreOffice",  NULL,    1 << 2,    0,           0 },
     {                 NULL,             NULL,          "database",  NULL,    1 << 3,    0,           0 },
     {        "qutebrowser",      "eureciclo",                NULL,  NULL,    1 << 3,    0,           0 },
-    {          "zen-alpha",             NULL,                NULL,  NULL,    1 << 3,    0,           0 },
+    {          "zen-beta",             NULL,                NULL,  NULL,    1 << 3,    0,           0 },
+    {          "zen-beta",             NULL,                "Extension: (Bitwarden Password Manager) - Bitwarden — Zen Browser",  NULL,    1 << 8,    0,           0 },
     {       "Virt-manager",             NULL,                NULL,  NULL,    1 << 4,    0,           0 },
     {"org.remmina.Remmina",             NULL,                NULL,  NULL,    1 << 4,    0,           0 },
     {               "Anki",             NULL,                NULL,  NULL,    1 << 5,    0,           0 },
@@ -177,7 +179,7 @@ static const Rule rules[] = {
 	{                 NULL,             NULL,    "Pritunl Client",  NULL,    1 << 8,    0,           0 },
 	{                 NULL,             NULL,         "Bitwarden",  NULL,    1 << 8,    0,           0 },
 	{           "Clockify",             NULL,                NULL,  NULL,    1 << 8,    0,           1 },
-	{                 NULL,             NULL,   "neovim-anywhere",  NULL,         0,    1,           0 },
+	{                 NULL,             NULL,   "neovim-anywhere",  NULL,         0,    0,           0 },
 };
 
 
