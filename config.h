@@ -163,6 +163,7 @@ static const Rule rules[] = {
     {                "zen",             NULL,                "Extension: (Bitwarden Password Manager) - Bitwarden — Zen Browser",  NULL,    1 << 8,    0,           0 },
     {       "Virt-manager",             NULL,                NULL,  NULL,    1 << 4,    0,           0 },
     {"org.remmina.Remmina",             NULL,                NULL,  NULL,    1 << 4,    0,           0 },
+    {            "calibre",             NULL,                NULL,  NULL,    1 << 4,    0,           0 },
     {               "Anki",             NULL,                NULL,  NULL,    1 << 5,    0,           0 },
     {                 NULL,             NULL,              "call",  NULL,    1 << 5,    0,           0 },
     {                 NULL,             NULL, "meet.google.com_/",  NULL,    1 << 5,    0,           0 },
