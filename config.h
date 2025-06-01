@@ -266,6 +266,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_v,          spawn,                  SHCMD("/$HOME/.scripts/copy-to-clipboard.sh ") },
 	{ MODKEY|ShiftMask,             XK_s,          spawn,                  SHCMD("flameshot gui -c -p $HOME/gdrive-pessoal/downloads/screenshots/") },
 	{ MODKEY|ControlMask,           XK_s,          spawn,                  SHCMD("$HOME/.scripts/print-to-markdown-note") },
+	{ MODKEY|ControlMask,           XK_k,          spawn,                  SHCMD("$HOME/.scripts/dmenu-kill-processes.sh") },
 	{ MODKEY|ShiftMask,             XK_l,          spawn,                  SHCMD("slock") },
 	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  SHCMD("st -e tmux") },
 	{ MODKEY,                       XK_w,          spawn,                  SHCMD("/usr/local/bin/brave-pessoal") },
