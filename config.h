@@ -183,6 +183,7 @@ static const Rule rules[] = {
     {           "VSCodium",             NULL,             NULL,  NULL,    1 << 7,    0,          -1 },
     {                 NULL,             NULL,        "Dbeaver",  NULL,    1 << 7,    0,          -1 },
 	{                 NULL,             NULL, "Pritunl Client",  NULL,    1 << 8,    0,          -1 },
+	{     "AWS VPN Client",             NULL,             NULL,  NULL,    1 << 8,    0,          -1 },
 	{                 NULL,             NULL,      "Bitwarden",  NULL,    1 << 8,    0,          -1 },
 	{                 NULL,             NULL,      "Bitwarden",  NULL,    1 << 8,    0,          -1 },
 	{                 NULL,             NULL,      "Extension: (Bitwarden Password Manager) - Bitwarden — Zen Browser",  NULL,    1 << 8,    0,          -1 },
