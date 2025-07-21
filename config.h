@@ -190,7 +190,7 @@ static const Rule rules[] = {
 	{                 NULL,             NULL,      "Bitwarden",  NULL,    1 << 8,    0,          -1 },
 	{                 NULL,             NULL,      "Bitwarden",  NULL,    1 << 8,    0,          -1 },
 	{                 NULL,             NULL,      "Extension: (Bitwarden Password Manager) - Bitwarden — Zen Browser",  NULL,    1 << 8,    0,          -1 },
-	{                 NULL,             NULL,   "neovim-anywhere",  NULL,         0,    1,           0 },
+	{                 NULL,             NULL,   "neovim-anywhere",  NULL,         0,    0,           0 },
 };
 
 
