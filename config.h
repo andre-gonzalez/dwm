@@ -148,16 +148,9 @@ static const Rule rules[] = {
     //               class              instance            title wintype    tags mask isfloating  monitor
     {                 NULL,             NULL,           "pessoal",  NULL,    1 << 0,    0,           0 },
     {        "qutebrowser",    "qutebrowser",                NULL,  NULL,    1 << 0,    0,           0 },
-    {                 NULL,             NULL,        "monitoring",  NULL,    1 << 0,    0,           1 },
     {              "Slack",             NULL,                NULL,  NULL,    1 << 1,    0,           0 },
-    {                 NULL,             NULL, "chat.google.com_/",  NULL,    1 << 1,    0,           0 },
-    {                 NULL,             NULL,              "Chat",  NULL,    1 << 1,    0,           0 },
-    {    "chat.google.com",             NULL,                NULL,  NULL,    1 << 1,    0,           0 },
-    {              "Zulip",             NULL,                NULL,  NULL,    1 << 1,    0,           0 },
-    {            "Ferdium",             NULL,                NULL,  NULL,    1 << 1,    0,           1 },
     {                 NULL,             NULL,          "terminal",  NULL,    1 << 2,    0,           0 },
 	{                 NULL,             NULL,       "LibreOffice",  NULL,    1 << 2,    0,           0 },
-    {                 NULL,             NULL,          "database",  NULL,    1 << 3,    0,           0 },
     {                "zen",             NULL,                NULL,  NULL,    1 << 3,    0,           0 },
     {                "zen",             NULL,                "Extension: (Bitwarden Password Manager) - Bitwarden — Zen Browser",  NULL,    1 << 8,    0,           0 },
     {          "1Password",             NULL,                NULL,  NULL,    1 << 8,    0,           0 },
@@ -180,7 +173,6 @@ static const Rule rules[] = {
     {            "Spotify",             NULL,                NULL,  NULL,    1 << 6,    0,           1 },
     {                 NULL,        "Spotify",                NULL,  NULL,    1 << 6,    0,           1 },
     {                 NULL,             NULL,           "Spotify",  NULL,    1 << 6,    0,           1 },
-    {                 NULL,             NULL,            "videos",  NULL,    1 << 6,    0,           1 },
     {                 NULL,             NULL,          "WhatsApp",  NULL,    1 << 7,    0,           1 },
     {            "DBeaver",             NULL,                NULL,  NULL,    1 << 7,    0,           0 },
     {                 NULL,             NULL,           "Dbeaver",  NULL,    1 << 7,    0,           0 },
@@ -189,8 +181,6 @@ static const Rule rules[] = {
 	{                 NULL,             NULL,    "Pritunl Client",  NULL,    1 << 8,    0,           0 },
 	{     "AWS VPN Client",             NULL,                NULL,  NULL,    1 << 8,    0,          -1 },
 	{                 NULL,             NULL,         "Bitwarden",  NULL,    1 << 8,    0,           0 },
-	{           "Clockify",             NULL,                NULL,  NULL,    1 << 8,    0,           1 },
-	{                 NULL,             NULL,   "neovim-anywhere",  NULL,         0,    0,           0 },
 };
 
 
