@@ -158,6 +158,7 @@ static const Rule rules[] = {
     {       "Virt-manager",             NULL,                NULL,  NULL,    1 << 4,    0,           0 },
     {"org.remmina.Remmina",             NULL,                NULL,  NULL,    1 << 4,    0,           0 },
     {            "calibre",             NULL,                NULL,  NULL,    1 << 4,    0,           0 },
+    {                 NULL,             NULL,"dbc-4903b728-16a0.cloud.databricks.com_/",  NULL,    1 << 4,    0,           0 },
     {         "databricks",             NULL,                NULL,  NULL,    1 << 4,    0,           0 },
     {         "Databricks",             NULL,                NULL,  NULL,    1 << 4,    0,           0 },
     {               "Anki",             NULL,                NULL,  NULL,    1 << 5,    0,           0 },
