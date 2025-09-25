@@ -259,6 +259,7 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = termcmd } }, */
 	{ MODKEY|ShiftMask,             XK_v,          spawn,                  SHCMD("clipmenu") },
 	{ MODKEY|ControlMask,           XK_v,          spawn,                  SHCMD("/$HOME/.scripts/copy-to-clipboard.sh ") },
+	{ MODKEY,                       XK_s,          spawn,                  SHCMD("bd") },
 	{ MODKEY|ShiftMask,             XK_s,          spawn,                  SHCMD("flameshot gui -c -p $HOME/gdrive-pessoal/downloads/screenshots/") },
 	{ MODKEY|ControlMask,           XK_s,          spawn,                  SHCMD("$HOME/.scripts/print-to-markdown-note") },
 	{ MODKEY|ControlMask,           XK_k,          spawn,                  SHCMD("$HOME/.scripts/dmenu-kill-processes.sh") },
@@ -283,6 +284,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_o,          spawn,                  SHCMD("/$HOME/.scripts/web") },
 	{ MODKEY,                       XK_a,          spawn,                  SHCMD("/$HOME/.scripts/todo") },
 	{ MODKEY,                       XK_c,          spawn,                  SHCMD("chatgpt-dmenu") },
+	{ MODKEY,                       XK_e,          spawn,                  SHCMD("/usr/bin/enteauth") },
 	{ MODKEY,                       XK_b,          togglebar,              {0} },
 	{ MODKEY,                       XK_j,          focusstack,             {.i = +1 } },
 	{ MODKEY,                       XK_k,          focusstack,             {.i = -1 } },
