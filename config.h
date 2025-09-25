@@ -285,6 +285,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_o,          spawn,                  SHCMD("/$HOME/.scripts/web") },
 	{ MODKEY,                       XK_a,          spawn,                  SHCMD("/$HOME/.scripts/todo") },
 	{ MODKEY,                       XK_c,          spawn,                  SHCMD("chatgpt-dmenu") },
+	{ MODKEY,                       XK_e,          spawn,                  SHCMD("/usr/bin/enteauth") },
 	{ MODKEY,                       XK_b,          togglebar,              {0} },
 	{ MODKEY,                       XK_j,          focusstack,             {.i = +1 } },
 	{ MODKEY,                       XK_k,          focusstack,             {.i = -1 } },
