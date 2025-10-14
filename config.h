@@ -152,7 +152,7 @@ static const Rule rules[] = {
     {                 NULL,             NULL,          "terminal",  NULL,    1 << 2,    0,           0 },
 	{                 NULL,             NULL,       "LibreOffice",  NULL,    1 << 2,    0,           0 },
     {                "zen",             NULL,                NULL,  NULL,    1 << 3,    0,           0 },
-    {                 NULL,             NULL,           "uberall",  NULL,    1 << 3,    0,           0 },
+    {                 NULL,             NULL,       "web-uberall",  NULL,    1 << 3,    0,           0 },
     {                "zen",             NULL,                "Extension: (Bitwarden Password Manager) - Bitwarden — Zen Browser",  NULL,    1 << 8,    0,           0 },
     {          "1Password",             NULL,                NULL,  NULL,    1 << 8,    0,           0 },
     {             "Cursor",             NULL,                NULL,  NULL,    1 << 4,    0,          -1 },
