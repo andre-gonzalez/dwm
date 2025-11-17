@@ -40,10 +40,12 @@ draw_tags(Bar *bar, BarArg *a)
 		w = TEXTW(icon);
 		drw_setscheme(drw, scheme[
 			m->tagset[m->seltags] & 1 << i
-			? SchemeTagsSel
+			? SchemeTagsSel     /* selected tag */
 			: urg & 1 << i
-			? SchemeUrg
-			: SchemeTagsNorm
+			? SchemeUrg         /* urgent tag */
+			: occ & 1 << i
+			? SchemeTagsOcc     /* OCCUPIED tag (NEW!) */
+			: SchemeTagsNorm    /* unused tag */
 		]);
 		drw_text(drw, x, a->y, w, a->h, lrpad / 2, icon, invert, False);
 		drawindicator(m, NULL, occ, x, a->y, w, a->h, i, -1, invert, tagindicatortype);

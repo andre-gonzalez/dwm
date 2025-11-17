@@ -88,6 +88,7 @@ enum {
 	SchemeHidNorm,
 	SchemeHidSel,
 	SchemeUrg,
+	SchemeTagsOcc,
 }; /* color schemes */
 
 enum {
@@ -929,7 +930,7 @@ void
 drawbar(Monitor *m)
 {
 	Bar *bar;
-	
+
 	if (m->showbar)
 		for (bar = m->bar; bar; bar = bar->next)
 			drawbarwin(bar);
