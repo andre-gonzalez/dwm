@@ -22,7 +22,7 @@ static const char dmenufont[]            = "DejaVu Sans Mono:size=9";
 
 static char c000000[]                    = "#000000"; // placeholder value
 
-static char normfgcolor[]                = "#bbbbbb";
+static char normfgcolor[]                = "#ffffff";
 static char normbgcolor[]                = "#000000";
 static char normbordercolor[]            = "#444444";
 static char normfloatcolor[]             = "#db8fd9";
@@ -32,7 +32,7 @@ static char selbgcolor[]                 = "#495a91";
 static char selbordercolor[]             = "#495a91";
 static char selfloatcolor[]              = "#495a91";
 
-static char titlenormfgcolor[]           = "#bbbbbb";
+static char titlenormfgcolor[]           = "#ffffff";
 static char titlenormbgcolor[]           = "#000000";
 static char titlenormbordercolor[]       = "#444444";
 static char titlenormfloatcolor[]        = "#db8fd9";
@@ -42,7 +42,7 @@ static char titleselbgcolor[]            = "#000000";
 static char titleselbordercolor[]        = "#495a91";
 static char titleselfloatcolor[]         = "#495a91";
 
-static char tagsnormfgcolor[]            = "#bbbbbb";
+static char tagsnormfgcolor[]            = "#ffffff";
 static char tagsnormbgcolor[]            = "#000000";
 static char tagsnormbordercolor[]        = "#444444";
 static char tagsnormfloatcolor[]         = "#db8fd9";
@@ -57,7 +57,7 @@ static char hidselfgcolor[]              = "#227799";
 static char hidnormbgcolor[]             = "#000000";
 static char hidselbgcolor[]              = "#000000";
 
-static char urgfgcolor[]                 = "#bbbbbb";
+static char urgfgcolor[]                 = "#ffffff";
 static char urgbgcolor[]                 = "#000000";
 static char urgbordercolor[]             = "#ff0000";
 static char urgfloatcolor[]              = "#db8fd9";
