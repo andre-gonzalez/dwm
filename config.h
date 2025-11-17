@@ -14,7 +14,7 @@ static const int topbar                  = 1;   /* 0 means bottom bar */
 static const int statusmon               = 'A';
 
 /* Indicators: see patch/bar_indicators.h for options */
-static int tagindicatortype              = INDICATOR_TOP_LEFT_SQUARE;
+static int tagindicatortype              = INDICATOR_NONE;
 static int tiledindicatortype            = INDICATOR_NONE;
 static int floatindicatortype            = INDICATOR_TOP_LEFT_SQUARE;
 static const char *fonts[]               = { "DejaVu Sans Mono:size=9" };
