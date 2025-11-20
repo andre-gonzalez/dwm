@@ -48,7 +48,7 @@ static char tagsnormbordercolor[]        = "#444444";
 static char tagsnormfloatcolor[]         = "#db8fd9";
 
 static char tagsselfgcolor[]             = "#eeeeee";
-static char tagsselbgcolor[]             = "#495a91";
+static char tagsselbgcolor[]             = "#000000";
 static char tagsselbordercolor[]         = "#495a91";
 static char tagsselfloatcolor[]          = "#495a91";
 
@@ -62,7 +62,10 @@ static char urgbgcolor[]                 = "#000000";
 static char urgbordercolor[]             = "#ff0000";
 static char urgfloatcolor[]              = "#db8fd9";
 
-
+static char tagsoccfgcolor[]             = "#8a8888";
+static char tagsoccbgcolor[]             = "#000000";
+static char tagsoccbordercolor[]         = "#888888";
+static char tagsoccfloatcolor[]          = "#888888";
 
 
 static char *colors[][ColCount] = {
@@ -76,6 +79,7 @@ static char *colors[][ColCount] = {
 	[SchemeHidNorm]      = { hidnormfgcolor,   hidnormbgcolor,   c000000,              c000000 },
 	[SchemeHidSel]       = { hidselfgcolor,    hidselbgcolor,    c000000,              c000000 },
 	[SchemeUrg]          = { urgfgcolor,       urgbgcolor,       urgbordercolor,       urgfloatcolor },
+	[SchemeTagsOcc]      = { tagsoccfgcolor, tagsoccbgcolor, tagsoccbordercolor, tagsoccfloatcolor },
 };
 
 

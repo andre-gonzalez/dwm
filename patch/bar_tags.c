@@ -43,6 +43,8 @@ draw_tags(Bar *bar, BarArg *a)
 			? SchemeTagsSel
 			: urg & 1 << i
 			? SchemeUrg
+			: occ & 1 << i
+			? SchemeTagsOcc
 			: SchemeTagsNorm
 		]);
 		drw_text(drw, x, a->y, w, a->h, lrpad / 2, icon, invert, False);
