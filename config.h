@@ -37,7 +37,7 @@ static char titlenormbgcolor[]           = "#000000";
 static char titlenormbordercolor[]       = "#444444";
 static char titlenormfloatcolor[]        = "#db8fd9";
 
-static char titleselfgcolor[]            = "#eeeeee";
+static char titleselfgcolor[]            = "#000000";
 static char titleselbgcolor[]            = "#000000";
 static char titleselbordercolor[]        = "#495a91";
 static char titleselfloatcolor[]         = "#495a91";
