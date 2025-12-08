@@ -165,6 +165,7 @@ static const Rule rules[] = {
     {                 NULL,             NULL,"dbc-4903b728-16a0.cloud.databricks.com_/",  NULL,    1 << 4,    0,           0 },
     {         "databricks",             NULL,                NULL,  NULL,    1 << 4,    0,           0 },
     {         "Databricks",             NULL,                NULL,  NULL,    1 << 4,    0,           0 },
+    {            "draw.io",             NULL,                NULL,  NULL,    1 << 4,    0,           0 },
     {               "Anki",             NULL,                NULL,  NULL,    1 << 5,    0,           0 },
     {                 NULL,             NULL,              "call",  NULL,    1 << 5,    0,           0 },
     {                 NULL,             NULL, "meet.google.com_/",  NULL,    1 << 5,    0,           0 },
