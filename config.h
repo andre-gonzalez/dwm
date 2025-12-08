@@ -164,6 +164,7 @@ static const Rule rules[] = {
     {             "Cursor",             NULL,             NULL,  NULL,    1 << 4,    0,          -1 },
     {"org.remmina.Remmina",             NULL,             NULL,  NULL,    1 << 4,    0,          -1 },
     {            "calibre",             NULL,             NULL,  NULL,    1 << 4,    0,           0 },
+    {            "draw.io",             NULL,             NULL,  NULL,    1 << 4,    0,           0 },
     {               "Anki",             NULL,             NULL,  NULL,    1 << 5,    0,          -1 },
     {                 NULL,             NULL,           "call",  NULL,    1 << 5,    0,          -1 },
     {                 NULL, "DesktopEditors",             NULL,  NULL,    1 << 5,    0,          -1 },
