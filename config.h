@@ -67,10 +67,6 @@ static char tagsoccbgcolor[]    = "#000000";
 static char tagsoccbordercolor[]= "#888888";
 static char tagsoccfloatcolor[] = "#888888";
 
-#define OPAQUE 0xffU
-static const unsigned int baralpha    = 0xd0;
-static const unsigned int borderalpha = OPAQUE;
-
 static char *colors[][ColCount] = {
 	/*                       fg                bg                border                float */
 	[SchemeNorm]         = { normfgcolor,      normbgcolor,      normbordercolor,      normfloatcolor },
@@ -83,20 +79,6 @@ static char *colors[][ColCount] = {
 	[SchemeHidSel]       = { hidselfgcolor,    hidselbgcolor,    c000000,              c000000 },
 	[SchemeUrg]          = { urgfgcolor,       urgbgcolor,       urgbordercolor,       urgfloatcolor },
 	[SchemeTagsOcc]      = { tagsoccfgcolor, tagsoccbgcolor, tagsoccbordercolor, tagsoccfloatcolor },
-};
-
-static const unsigned int alphas[][ColCount] = {
-	/*                       fg       bg        border        float */
-	[SchemeNorm]         = { OPAQUE,  baralpha, borderalpha,  borderalpha },
-	[SchemeSel]          = { OPAQUE,  baralpha, borderalpha,  borderalpha },
-	[SchemeTitleNorm]    = { OPAQUE,  baralpha, borderalpha,  borderalpha },
-	[SchemeTitleSel]     = { OPAQUE,  baralpha, borderalpha,  borderalpha },
-	[SchemeTagsNorm]     = { OPAQUE,  baralpha, borderalpha,  borderalpha },
-	[SchemeTagsSel]      = { OPAQUE,  baralpha, borderalpha,  borderalpha },
-	[SchemeHidNorm]      = { OPAQUE,  baralpha, 0,            0 },
-	[SchemeHidSel]       = { OPAQUE,  baralpha, 0,            0 },
-	[SchemeUrg]          = { OPAQUE,  baralpha, borderalpha,  borderalpha },
-	[SchemeTagsOcc]      = { OPAQUE,  baralpha, borderalpha,  borderalpha },
 };
 
 
