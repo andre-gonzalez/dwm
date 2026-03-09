@@ -40,6 +40,7 @@
 #include <X11/extensions/Xinerama.h>
 #endif /* XINERAMA */
 #include <X11/Xft/Xft.h>
+#include <Imlib2.h>
 
 #include "drw.h"
 #include "util.h"
@@ -351,6 +352,7 @@ static Monitor *wintomon(Window w);
 static int xerror(Display *dpy, XErrorEvent *ee);
 static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
+static void loadbarbgimg(void);
 static void zoom(const Arg *arg);
 
 /* bar functions */
@@ -399,6 +401,8 @@ static Display *dpy;
 static Drw *drw;
 static Monitor *mons, *selmon;
 static Window root, wmcheckwin;
+static Pixmap barbgpixmap;
+static int barbgpixmap_w, barbgpixmap_h;
 
 /* configuration, allows nested code to access above variables */
 #include "config.h"
@@ -967,6 +971,17 @@ drawbarwin(Bar *bar)
 
 	drw_setscheme(drw, scheme[SchemeNorm]);
 	drw_rect(drw, lx, bar->borderpx, lw, bar->bh - 2 * bar->borderpx, 1, 1);
+
+	if (barbgpixmap) {
+		int src_x = barbgimg_x;
+		int src_y = barbgimg_y;
+		int copy_w = MIN(bar->bw, barbgpixmap_w - src_x);
+		int copy_h = MIN(bar->bh, barbgpixmap_h - src_y);
+		if (copy_w > 0 && copy_h > 0)
+			XCopyArea(dpy, barbgpixmap, drw->drawable, drw->gc, src_x, src_y, copy_w, copy_h, 0, 0);
+		drw->nobgfill = 1;
+	}
+
 	for (r = 0; r < LENGTH(barrules); r++) {
 		br = &barrules[r];
 		if (br->bar != bar->idx || !br->widthfunc || (br->monitor == 'A' && bar->mon != selmon))
@@ -1048,6 +1063,8 @@ drawbarwin(Bar *bar)
 		if (br->drawfunc)
 			total_drawn += br->drawfunc(bar, &darg);
 	}
+
+	drw->nobgfill = 0;
 
 	if (total_drawn == 0 && bar->showbar) {
 		bar->showbar = 0;
@@ -1899,6 +1916,7 @@ setup(void)
 		die("no fonts could be loaded.");
 	lrpad = drw->fonts->h;
 	bh = drw->fonts->h + 2;
+	loadbarbgimg();
 	updategeom();
 	/* init atoms */
 	utf8string = XInternAtom(dpy, "UTF8_STRING", False);
@@ -2512,6 +2530,36 @@ xerrorstart(Display *dpy, XErrorEvent *ee)
 {
 	die("dwm: another window manager is already running");
 	return -1;
+}
+
+void
+loadbarbgimg(void)
+{
+	Imlib_Image img;
+
+	barbgpixmap = 0;
+	if (!barbgimg)
+		return;
+
+	img = imlib_load_image(barbgimg);
+	if (!img) {
+		fprintf(stderr, "dwm: cannot load bar background image: %s\n", barbgimg);
+		return;
+	}
+
+	imlib_context_set_image(img);
+	barbgpixmap_w = imlib_image_get_width();
+	barbgpixmap_h = imlib_image_get_height();
+
+	imlib_context_set_display(dpy);
+	imlib_context_set_visual(DefaultVisual(dpy, screen));
+	imlib_context_set_colormap(DefaultColormap(dpy, screen));
+
+	barbgpixmap = XCreatePixmap(dpy, root, barbgpixmap_w, barbgpixmap_h, DefaultDepth(dpy, screen));
+	imlib_context_set_drawable(barbgpixmap);
+	imlib_render_image_on_drawable(0, 0);
+
+	imlib_free_image();
 }
 
 void

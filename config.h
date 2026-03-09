@@ -67,6 +67,10 @@ static char tagsoccbgcolor[]    = "#000000";
 static char tagsoccbordercolor[]= "#888888";
 static char tagsoccfloatcolor[] = "#888888";
 
+static const char *barbgimg     = "/home/frank/.config/.wallpaper/wide-nebulosa-roxa.jpg"; /* path to bar background image, NULL to disable */
+static const int barbgimg_x     = 0;   /* x offset into source image */
+static const int barbgimg_y     = 0;   /* y offset into source image */
+
 static char *colors[][ColCount] = {
 	/*                       fg                bg                border                float */
 	[SchemeNorm]         = { normfgcolor,      normbgcolor,      normbordercolor,      normfloatcolor },
