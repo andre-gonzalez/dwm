@@ -26,10 +26,8 @@ draw_wintitle(Bar *bar, BarArg *a)
 	if (w <= TEXTW("A") - lrpad + tpad) // reduce text padding if wintitle is too small
 		tpad = (w - TEXTW("A") + lrpad < 0 ? 0 : (w - TEXTW("A") + lrpad) / 2);
 
-	if (!drw->nobgfill) {
-		XSetForeground(drw->dpy, drw->gc, drw->scheme[ColBg].pixel);
-		XFillRectangle(drw->dpy, drw->drawable, drw->gc, x, a->y, w, a->h);
-	}
+	XSetForeground(drw->dpy, drw->gc, drw->scheme[ColBg].pixel);
+	XFillRectangle(drw->dpy, drw->drawable, drw->gc, x, a->y, w, a->h);
 
 
 	tx += tpad;
