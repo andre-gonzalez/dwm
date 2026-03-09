@@ -68,7 +68,15 @@ static char tagsoccbordercolor[]= "#888888";
 static char tagsoccfloatcolor[] = "#888888";
 
 #define OPAQUE 0xffU
-static const unsigned int baralpha    = 0xd0;
+/*
+ • `0x00` (0) - Fully transparent, bar background is invisible
+ • `0x40` (64) - ~25% opacity
+ • `0x80` (128) - ~50% opacity
+ • `0xb0` (176) - ~69% opacity
+ • `0xd0` (208) - ~82% opacity
+ • `0xff` (255) - Fully opaque, no transparency at all
+*/
+static const unsigned int baralpha    = 0x00;
 static const unsigned int borderalpha = OPAQUE;
 
 static char *colors[][ColCount] = {
