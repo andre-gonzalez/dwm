@@ -303,7 +303,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_b,          spawn,                  SHCMD("$HOME/.scripts/conectar-xm3") },
 	{ MODKEY,                       XK_F1,         spawn,                  SHCMD("playerctl play-pause") },
 	{ ControlMask|ShiftMask,        XK_Escape,     spawn,                  SHCMD("st -e btop") },
-	{ MODKEY|ShiftMask,             XK_a,          spawn,                  SHCMD("pavucontrol") },
+	{ MODKEY|ShiftMask,             XK_a,          spawn,                  SHCMD("GTK_THEME=Arc-Dark pavucontrol") },
 	{ MODKEY,                       XK_z,          spawn,                  SHCMD("setxkbmap -layout us -variant dvorak-intl && setxkbmap -option caps:escape") },
 	{ MODKEY,                       XK_Z,          spawn,                  SHCMD("setxkbmap -layout us -variant dvorak-intl && setxkbmap -option caps:escape") },
 	{ MODKEY,                       XK_o,          spawn,                  SHCMD("/$HOME/.scripts/web") },
