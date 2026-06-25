@@ -91,7 +91,7 @@ static char tagsoccfloatcolor[] = "#888888";
  • 95% → `0xf2` (242)
  • 100% → `0xff` (255)
 */
-static const unsigned int baralpha    = 0x26;
+static const unsigned int baralpha    = 0x0d;
 static const unsigned int borderalpha = OPAQUE;
 
 static char *colors[][ColCount] = {
@@ -192,7 +192,7 @@ static const Rule rules[] = {
     //               class              instance            title wintype    tags mask isfloating  monitor
     {                 NULL,             NULL,           "pessoal",  NULL,    1 << 0,    0,           0 },
     {        "qutebrowser",    "qutebrowser",                NULL,  NULL,    1 << 0,    0,           0 },
-    {              "Slack",             NULL,                NULL,  NULL,    1 << 1,    0,           0 },
+    {              "slack",             NULL,                NULL,  NULL,    1 << 1,    0,           0 },
     {                 NULL,             NULL,          "terminal",  NULL,    1 << 2,    0,           0 },
 	{                 NULL,             NULL,       "LibreOffice",  NULL,    1 << 2,    0,           0 },
     {                "zen",             NULL,                NULL,  NULL,    1 << 3,    0,           0 },
