@@ -193,7 +193,7 @@ static const Rule rules[] = {
     //           class          instance            title wintype    tags mask isfloating  monitor
     {                 NULL,             NULL,        "pessoal",  NULL,    1 << 0,    0,          -1 },
     {        "qutebrowser",    "qutebrowser",             NULL,  NULL,    1 << 0,    0,           0 },
-    {              "Slack",             NULL,             NULL,  NULL,    1 << 1,    0,          -1 },
+    {              "slack",             NULL,             NULL,  NULL,    1 << 1,    0,          -1 },
     {                 NULL,             NULL,       "terminal",  NULL,    1 << 2,    0,          -1 },
 	{                 NULL,             NULL,    "LibreOffice",  NULL,    1 << 2,    0,          -1 },
     {                "zen",             NULL,             NULL,  NULL,    1 << 3,    0,          -1 },
