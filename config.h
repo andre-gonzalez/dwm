@@ -333,6 +333,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Z,          spawn,                  SHCMD("setxkbmap -layout us -variant dvorak-intl && setxkbmap -option caps:escape") },
 	{ MODKEY,                       XK_o,          spawn,                  SHCMD("/$HOME/.scripts/web") },
 	{ MODKEY|ControlMask,           XK_o,          spawn,                  SHCMD("/$HOME/.scripts/web -b") },
+	{ MODKEY|ShiftMask,             XK_o,          spawn,                  SHCMD("/$HOME/.scripts/add-bookmark") },
 	{ MODKEY,                       XK_a,          spawn,                  SHCMD("/$HOME/.scripts/todo") },
 	{ MODKEY,                       XK_c,          spawn,                  SHCMD("chatgpt-dmenu") },
 	{ MODKEY,                       XK_e,          spawn,                  SHCMD("/usr/bin/enteauth") },
