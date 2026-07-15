@@ -226,6 +226,7 @@ static const Rule rules[] = {
     { "jetbrains-datagrip",             NULL,                NULL,  NULL,    1 << 7,    0,          -1 },
     {           "VSCodium",             NULL,                NULL,  NULL,    1 << 7,    0,           0 },
 	{                 NULL,             NULL,    "Pritunl Client",  NULL,    1 << 8,    0,           0 },
+	{                 NULL,             NULL,        "Whispering",  NULL,    1 << 8,    0,           0 },
 	{     "AWS VPN Client",             NULL,                NULL,  NULL,    1 << 8,    0,          -1 },
 	{                 NULL,             NULL,         "Bitwarden",  NULL,    1 << 8,    0,           0 },
 };
