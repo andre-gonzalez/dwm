@@ -311,7 +311,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_s,          spawn,                  SHCMD("$HOME/.scripts/print-to-markdown-note") },
 	{ MODKEY|ControlMask,           XK_k,          spawn,                  SHCMD("$HOME/.scripts/dmenu-kill-processes.sh") },
 	{ MODKEY|ShiftMask,             XK_l,          spawn,                  SHCMD("slock") },
-	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  SHCMD("st -e tmux") },
+	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  SHCMD("st -e tmux new-session \; set -g status off") },
 	{ MODKEY,                       XK_w,          spawn,                  SHCMD("/$HOME/.scripts/web-pessoal") },
 	{ MODKEY|ShiftMask,             XK_w,          spawn,                  SHCMD("/$HOME/.scripts/web-uberall") },
 	{ MODKEY|ControlMask,           XK_w,          spawn,                  SHCMD("/$HOME/.scripts/add-bookmark") },
