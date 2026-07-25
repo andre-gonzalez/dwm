@@ -17,6 +17,7 @@
 #include "tagallmon.c"
 #include "togglefullscreen.c"
 #include "vanitygaps.c"
+#include "warp.c"
 /* Layouts */
 #include "layout_facts.c"
 #include "layout_centeredmaster.c"
