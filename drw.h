@@ -40,6 +40,7 @@ Fnt *drw_fontset_create(Drw* drw, const char *fonts[], size_t fontcount);
 void drw_font_getexts(Fnt *font, const char *text, unsigned int len, unsigned int *w, unsigned int *h);
 void drw_fontset_free(Fnt* set);
 unsigned int drw_fontset_getwidth(Drw *drw, const char *text, Bool markup);
+unsigned int drw_fontset_getwidth_clamp(Drw *drw, const char *text, unsigned int n);
 
 /* Colorscheme abstraction */
 void drw_clr_create(
@@ -48,12 +49,14 @@ void drw_clr_create(
 	const char *clrname,
 	unsigned int alpha
 );
+void drw_clr_free(Drw *drw, Clr *c);
 Clr *drw_scm_create(
 	Drw *drw,
 	char *clrnames[],
 	const unsigned int alphas[],
 	size_t clrcount
 );
+void drw_scm_free(Drw *drw, Clr *scm, size_t clrcount);
 
 /* Cursor abstraction */
 Cur *drw_cur_create(Drw *drw, int shape);
