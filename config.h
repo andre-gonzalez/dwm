@@ -6,7 +6,12 @@ static const unsigned int gappih         = 0;  /* horiz inner gap between window
 static const unsigned int gappiv         = 0;  /* vert inner gap between windows */
 static const unsigned int gappoh         = 0;  /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov         = 0;  /* vert outer gap between windows and screen edge */
-static const int smartgaps_fact          = 0;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
+/* Ultra-wide mode: when a tag holds exactly one tiled window, keep this many
+ * pixels empty on each side instead of letting it span the full width. Applied
+ * per monitor, enabled automatically at/above ultrawide_minw (see
+ * patch/ultrawide.c), and toggled by hand with MOD+Mod4+w. */
+static const int ultrawide_ov            = 300; /* side margin for a lone tiled window */
+static const int ultrawide_minw          = 2560; /* auto-enable at/above this monitor width */
 static const int showbar                 = 0;   /* 0 means no bar */
 static const int topbar                  = 1;   /* 0 means bottom bar */
 
@@ -190,45 +195,48 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
 	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
-    //           class          instance            title wintype    tags mask isfloating  monitor
-    {                 NULL,             NULL,        "pessoal",  NULL,    1 << 0,    0,          -1 },
-    {        "qutebrowser",    "qutebrowser",             NULL,  NULL,    1 << 0,    0,           0 },
-    {              "slack",             NULL,             NULL,  NULL,    1 << 1,    0,          -1 },
-    {                 NULL,             NULL,       "terminal",  NULL,    1 << 2,    0,          -1 },
-	{                 NULL,             NULL,    "LibreOffice",  NULL,    1 << 2,    0,          -1 },
-    {                "zen",             NULL,             NULL,  NULL,    1 << 3,    0,          -1 },
-    {                "zen",             NULL,             NULL,  NULL,    1 << 3,    0,           0 },
-    {                 NULL,             NULL,    "web-uberall",  NULL,    1 << 3,    0,           0 },
-    {                "zen",             NULL,                "Extension: (Bitwarden Password Manager) - Bitwarden — Zen Browser",  NULL,    1 << 8,    0,           0 },
-    {          "1Password",             NULL,             NULL,  NULL,    1 << 8,    0,           0 },
-    {       "Virt-manager",             NULL,             NULL,  NULL,    1 << 4,    0,          -1 },
-    {             "Cursor",             NULL,             NULL,  NULL,    1 << 4,    0,          -1 },
-    {"org.remmina.Remmina",             NULL,             NULL,  NULL,    1 << 4,    0,          -1 },
-    {            "calibre",             NULL,             NULL,  NULL,    1 << 4,    0,           0 },
-    {            "draw.io",             NULL,             NULL,  NULL,    1 << 4,    0,           0 },
-    {               "Anki",             NULL,             NULL,  NULL,    1 << 5,    0,          -1 },
-    {                 NULL,             NULL,           "call",  NULL,    1 << 5,    0,          -1 },
-    {                 NULL, "DesktopEditors",             NULL,  NULL,    1 << 5,    0,          -1 },
-    {                 NULL,             NULL,     "Portmaster",  NULL,    1 << 5,    0,          -1 },
-    {        "qutebrowser",           "call",             NULL,  NULL,    1 << 5,    0,           0 },
-    {                 NULL,             NULL,"meet.google.com_/",NULL,    1 << 5,    0,           0 },
-    {                 NULL,             NULL,    "Google Meet",  NULL,    1 << 5,    0,           0 },
-    {                 NULL,             NULL,           "Meet",  NULL,    1 << 5,    0,           0 },
-    {    "meet.google.com",             NULL,             NULL,  NULL,    1 << 5,    0,           0 },
-    {            "Spotify",             NULL,             NULL,  NULL,    1 << 6,    0,          -1 },
-    {                 NULL,        "Spotify",             NULL,  NULL,    1 << 6,    0,          -1 },
-    {                 NULL,             NULL,        "Spotify",  NULL,    1 << 6,    0,          -1 },
-    {                 NULL,             NULL,       "WhatsApp",  NULL,    1 << 7,    0,          -1 },
-    {            "DBeaver",             NULL,             NULL,  NULL,    1 << 7,    0,          -1 },
-    {           "VSCodium",             NULL,             NULL,  NULL,    1 << 7,    0,          -1 },
-    {                 NULL,             NULL,        "Dbeaver",  NULL,    1 << 7,    0,          -1 },
-    { "jetbrains-datagrip",             NULL,             NULL,  NULL,    1 << 7,    0,          -1 },
-	{                 NULL,             NULL, "Pritunl Client",  NULL,    1 << 8,    0,          -1 },
-	{                 NULL,             NULL,     "Whispering",  NULL,    1 << 8,    0,           0 },
-	{     "AWS VPN Client",             NULL,             NULL,  NULL,    1 << 8,    0,          -1 },
-	{                 NULL,             NULL,      "Bitwarden",  NULL,    1 << 8,    0,          -1 },
-	{                 NULL,             NULL,      "Bitwarden",  NULL,    1 << 8,    0,          -1 },
-	{                 NULL,             NULL,      "Extension: (Bitwarden Password Manager) - Bitwarden — Zen Browser",  NULL,    1 << 8,    0,          -1 },
+    /* Both autorandr profiles (laptop, docked) drive a single output, so every
+     * rule uses monitor -1; there is never a monitor 1 to target. */
+    //           class          instance             title  wintype   tags mask isfloating  monitor
+    {                 NULL,             NULL,       "pessoal",  NULL,    1 << 0,    0,          -1 },
+    {        "qutebrowser",    "qutebrowser",            NULL,  NULL,    1 << 0,    0,          -1 },
+    {              "slack",             NULL,            NULL,  NULL,    1 << 1,    0,          -1 },
+    {                 NULL,             NULL,      "terminal",  NULL,    1 << 2,    0,          -1 },
+    {                 NULL,             NULL,   "LibreOffice",  NULL,    1 << 2,    0,          -1 },
+    {                "zen",             NULL,            NULL,  NULL,    1 << 3,    0,          -1 },
+    {                 NULL,             NULL,   "web-uberall",  NULL,    1 << 3,    0,          -1 },
+    {       "Virt-manager",             NULL,            NULL,  NULL,    1 << 4,    0,          -1 },
+    {             "Cursor",             NULL,            NULL,  NULL,    1 << 4,    0,          -1 },
+    {"org.remmina.Remmina",             NULL,            NULL,  NULL,    1 << 4,    0,          -1 },
+    {            "calibre",             NULL,            NULL,  NULL,    1 << 4,    0,          -1 },
+    {            "draw.io",             NULL,            NULL,  NULL,    1 << 4,    0,          -1 },
+    {         "databricks",             NULL,            NULL,  NULL,    1 << 4,    0,          -1 },
+    {         "Databricks",             NULL,            NULL,  NULL,    1 << 4,    0,          -1 },
+    {                 NULL,             NULL, "dbc-4903b728-16a0.cloud.databricks.com_/",  NULL,    1 << 4,    0,          -1 },
+    {               "Anki",             NULL,            NULL,  NULL,    1 << 5,    0,          -1 },
+    {                 NULL,             NULL,          "call",  NULL,    1 << 5,    0,          -1 },
+    {                 NULL, "DesktopEditors",            NULL,  NULL,    1 << 5,    0,          -1 },
+    {                 NULL,             NULL,    "Portmaster",  NULL,    1 << 5,    0,          -1 },
+    {        "qutebrowser",           "call",            NULL,  NULL,    1 << 5,    0,          -1 },
+    {            "firefox",             NULL,            NULL,  NULL,    1 << 5,    0,          -1 },
+    {                 NULL,             NULL,"meet.google.com_/", NULL,   1 << 5,    0,          -1 },
+    {                 NULL,             NULL,   "Google Meet",  NULL,    1 << 5,    0,          -1 },
+    {                 NULL,             NULL,          "Meet",  NULL,    1 << 5,    0,          -1 },
+    {    "meet.google.com",             NULL,            NULL,  NULL,    1 << 5,    0,          -1 },
+    {            "Spotify",             NULL,            NULL,  NULL,    1 << 6,    0,          -1 },
+    {                 NULL,        "Spotify",            NULL,  NULL,    1 << 6,    0,          -1 },
+    {                 NULL,             NULL,       "Spotify",  NULL,    1 << 6,    0,          -1 },
+    {                 NULL,             NULL,      "WhatsApp",  NULL,    1 << 7,    0,          -1 },
+    {            "DBeaver",             NULL,            NULL,  NULL,    1 << 7,    0,          -1 },
+    {                 NULL,             NULL,       "Dbeaver",  NULL,    1 << 7,    0,          -1 },
+    {           "VSCodium",             NULL,            NULL,  NULL,    1 << 7,    0,          -1 },
+    { "jetbrains-datagrip",             NULL,            NULL,  NULL,    1 << 7,    0,          -1 },
+    {          "1Password",             NULL,            NULL,  NULL,    1 << 8,    0,          -1 },
+    {                 NULL,             NULL,"Pritunl Client",  NULL,    1 << 8,    0,          -1 },
+    {                 NULL,             NULL,    "Whispering",  NULL,    1 << 8,    0,          -1 },
+    {     "AWS VPN Client",             NULL,            NULL,  NULL,    1 << 8,    0,          -1 },
+    {                 NULL,             NULL,     "Bitwarden",  NULL,    1 << 8,    0,          -1 },
+    {                 NULL,             NULL,      "Extension: (Bitwarden Password Manager) - Bitwarden — Zen Browser",  NULL,    1 << 8,    0,          -1 },
 };
 
 
@@ -364,6 +372,7 @@ static Key keys[] = {
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_9,          incrovgaps,             {.i = -1 } },
 	{ MODKEY|Mod4Mask,              XK_0,          togglegaps,             {0} },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_0,          defaultgaps,            {0} },
+	{ MODKEY|ControlMask|ShiftMask, XK_w,          toggleultrawide,        {0} },
 	{ MODKEY,                       XK_Tab,        view,                   {0} },
 	{ MODKEY|ShiftMask,             XK_c,          killclient,             {0} },
 	{ MODKEY|ShiftMask,             XK_q,          quit,                   {0} },

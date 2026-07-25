@@ -118,12 +118,11 @@ getgaps(Monitor *m, int *oh, int *ov, int *ih, int *iv, unsigned int *nc)
 	Client *c;
 
 	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
-	if (n == 1) {
-		oe *= smartgaps_fact; // outer gaps disabled or multiplied when only one client
-	}
 
 	*oh = m->gappoh*oe; // outer horizontal gap
 	*ov = m->gappov*oe; // outer vertical gap
+	if (n == 1 && enablegaps)
+		*ov = m->smartov;   // lone tiled window: 0 spans the full width, >0 keeps a side margin
 	*ih = m->gappih*ie; // inner horizontal gap
 	*iv = m->gappiv*ie; // inner vertical gap
 	*nc = n;            // number of clients

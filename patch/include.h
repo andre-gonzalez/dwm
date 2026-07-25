@@ -16,7 +16,9 @@
 #include "pertag.h"
 #include "tagallmon.h"
 #include "togglefullscreen.h"
+#include "ultrawide.h"
 #include "vanitygaps.h"
+#include "warp.h"
 /* Layouts */
 #include "layout_centeredmaster.h"
 #include "layout_monocle.h"
