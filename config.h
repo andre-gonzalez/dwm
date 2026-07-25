@@ -197,7 +197,7 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
     /* Both autorandr profiles (laptop, docked) drive a single output, so every
      * rule uses monitor -1; there is never a monitor 1 to target. */
-    //           class          instance             title  wintype   tags mask isfloating  monitor
+    //           class          instance             title  wintype   tags mask isfloating  monitor  iscentered
     {                 NULL,             NULL,       "pessoal",  NULL,    1 << 0,    0,          -1 },
     {        "qutebrowser",    "qutebrowser",            NULL,  NULL,    1 << 0,    0,          -1 },
     {              "slack",             NULL,            NULL,  NULL,    1 << 1,    0,          -1 },
@@ -237,6 +237,10 @@ static const Rule rules[] = {
     {     "AWS VPN Client",             NULL,            NULL,  NULL,    1 << 8,    0,          -1 },
     {                 NULL,             NULL,     "Bitwarden",  NULL,    1 << 8,    0,          -1 },
     {                 NULL,             NULL,      "Extension: (Bitwarden Password Manager) - Bitwarden — Zen Browser",  NULL,    1 << 8,    0,          -1 },
+    /* ~/.scripts/neovim-anywhere.sh: scratch nvim buffer, floats centered on the
+     * current tag (tags mask 0 = wherever you are). Keep last: applyrules lets the
+     * last matching rule win, so a stray title match can't unfloat it. */
+    {    "neovim-anywhere",             NULL,            NULL,  NULL,         0,    1,          -1,          1 },
 };
 
 

@@ -194,7 +194,7 @@ struct Client {
 	int basew, baseh, incw, inch, maxw, maxh, minw, minh, hintsvalid;
 	int bw, oldbw;
 	unsigned int tags;
-	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
+	int isfixed, isfloating, iscentered, isurgent, neverfocus, oldstate, isfullscreen;
 	Client *next;
 	Client *snext;
 	Monitor *mon;
@@ -249,13 +249,14 @@ typedef struct {
 	unsigned int tags;
 	int isfloating;
 	int monitor;
+	int iscentered;
 } Rule;
 
 #define RULE(...) { .monitor = -1, __VA_ARGS__ },
 
 /* Cross patch compatibility rule macro helper macros */
 #define FLOATING , .isfloating = 1
-#define CENTERED
+#define CENTERED , .iscentered = 1
 #define PERMANENT
 #define FAKEFULLSCREEN
 #define NOSWALLOW
@@ -427,6 +428,7 @@ applyrules(Client *c)
 
 	/* rule matching */
 	c->isfloating = 0;
+	c->iscentered = 0;
 	c->tags = 0;
 	XGetClassHint(dpy, c->win, &ch);
 	class    = ch.res_class ? ch.res_class : broken;
@@ -442,6 +444,7 @@ applyrules(Client *c)
 		&& (!r->wintype || wintype == XInternAtom(dpy, r->wintype, False)))
 		{
 			c->isfloating = r->isfloating;
+			c->iscentered = r->iscentered;
 			c->tags |= r->tags;
 			for (m = mons; m && m->num != r->monitor; m = m->next);
 			if (m)
@@ -1373,6 +1376,11 @@ manage(Window w, XWindowAttributes *wa)
 		c->mon = selmon;
 		c->bw = borderpx;
 		applyrules(c);
+	}
+
+	if (c->iscentered) {
+		c->x = c->mon->wx + (c->mon->ww - WIDTH(c)) / 2;
+		c->y = c->mon->wy + (c->mon->wh - HEIGHT(c)) / 2;
 	}
 
 	if (c->x + WIDTH(c) > c->mon->mx + c->mon->mw)
