@@ -10,7 +10,7 @@ static const unsigned int gappov         = 0;  /* vert outer gap between windows
  * pixels empty on each side instead of letting it span the full width. Applied
  * per monitor, enabled automatically at/above ultrawide_minw (see
  * patch/ultrawide.c), and toggled by hand with MOD+Mod4+w. */
-static const int ultrawide_ov            = 300; /* side margin for a lone tiled window */
+static const int ultrawide_ov            = 320; /* side margin for a lone tiled window */
 static const int ultrawide_minw          = 2560; /* auto-enable at/above this monitor width */
 static const int showbar                 = 1;   /* 0 means no bar */
 static const int topbar                  = 1;   /* 0 means bottom bar */
