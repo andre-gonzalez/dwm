@@ -339,7 +339,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F8,         spawn,                  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +1000; touch /tmp/dwm_volume_show; ( sleep 2 && rm -f /tmp/dwm_volume_show && kill -44 $(pidof dwmblocks) ) & kill -44 $(pidof dwmblocks)") },
 	{ MODKEY|ShiftMask,             XK_F7,         spawn,                  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -625; touch /tmp/dwm_volume_show; ( sleep 2 && rm -f /tmp/dwm_volume_show && kill -44 $(pidof dwmblocks) ) & kill -44 $(pidof dwmblocks)") },
 	{ MODKEY|ShiftMask,             XK_F8,         spawn,                  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +625; touch /tmp/dwm_volume_show; ( sleep 2 && rm -f /tmp/dwm_volume_show && kill -44 $(pidof dwmblocks) ) & kill -44 $(pidof dwmblocks)") },
-	{ MODKEY|ShiftMask,             XK_b,          spawn,                  SHCMD("$HOME/.scripts/conectar-xm3") },
+	{ MODKEY|ShiftMask,             XK_b,          spawn,                  SHCMD("/home/frank/.scripts/conectar-nothing-ear-a") },
 	{ MODKEY,                       XK_F1,         spawn,                  SHCMD("playerctl play-pause") },
 	{ ControlMask|ShiftMask,        XK_Escape,     spawn,                  SHCMD("st -e btop") },
 	{ MODKEY|ShiftMask,             XK_a,          spawn,                  SHCMD("pavucontrol") },
