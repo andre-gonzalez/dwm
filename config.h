@@ -316,6 +316,7 @@ static const char *dmenucmd[] = {
 static Key keys[] = {
 	/* modifier                     key            function                argument */
 	{ MODKEY,                       XK_p,          spawn,                  {.v = dmenucmd } },
+	{ MODKEY|ControlMask,           XK_p,          spawn,                  SHCMD("$HOME/.scripts/open-file") },
 	/* { MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = termcmd } }, */
 	{ MODKEY|ShiftMask,             XK_v,          spawn,                  SHCMD("clipmenu") },
 	{ MODKEY|ControlMask,           XK_v,          spawn,                  SHCMD("/$HOME/.scripts/copy-to-clipboard.sh ") },
