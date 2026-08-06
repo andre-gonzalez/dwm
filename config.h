@@ -330,6 +330,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_w,          spawn,                  SHCMD("/$HOME/.scripts/web-uberall") },
 	{ MODKEY|ControlMask,           XK_w,          spawn,                  SHCMD("/$HOME/.scripts/add-bookmark") },
 	{ MODKEY|ShiftMask,             XK_n,          spawn,                  SHCMD("obsidian") },
+	{ MODKEY|ShiftMask,             XK_d,          spawn,                  SHCMD("dunstctl close-all") },
 	{ MODKEY,                       XK_v,          spawn,                  SHCMD("neovim-anywhere.sh") },
 	{ MODKEY,                       XK_F2,         spawn,                  SHCMD("brightnessctl set 5%-; touch /tmp/dwm_backlight_show; ( sleep 2 && rm -f /tmp/dwm_backlight_show && kill -45 $(pidof dwmblocks) ) & kill -45 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_F3,         spawn,                  SHCMD("brightnessctl set +5%; touch /tmp/dwm_backlight_show; ( sleep 2 && rm -f /tmp/dwm_backlight_show && kill -45 $(pidof dwmblocks) ) & kill -45 $(pidof dwmblocks)") },
