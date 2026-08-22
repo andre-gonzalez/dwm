@@ -2248,13 +2248,23 @@ updatebarpos(Monitor *m)
 
 	if (!m->showbar)
 		return;
+
+	/* showbar == 2 is holdbar: place the bars but keep the window area at
+	 * full monitor size so clients stay tiled underneath them */
+	int wy = m->wy, wh = m->wh;
+
 	for (bar = m->bar; bar; bar = bar->next) {
 		if (!bar->showbar)
 			continue;
 		if (bar->topbar)
-			m->wy = m->wy + bar->bh + y_pad;
-		m->wh -= y_pad + bar->bh;
-		bar->by = (bar->topbar ? m->wy - bar->bh : m->wy + m->wh);
+			wy = wy + bar->bh + y_pad;
+		wh -= y_pad + bar->bh;
+		bar->by = (bar->topbar ? wy - bar->bh : wy + wh);
+	}
+
+	if (m->showbar != 2) {
+		m->wy = wy;
+		m->wh = wh;
 	}
 }
 
