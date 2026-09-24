@@ -321,7 +321,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_v,          spawn,                  SHCMD("clipmenu") },
 	{ MODKEY|ControlMask,           XK_v,          spawn,                  SHCMD("/$HOME/.scripts/copy-to-clipboard.sh ") },
 	{ MODKEY,                       XK_s,          spawn,                  SHCMD("bw-dmenu") },
-	{ MODKEY|ShiftMask,             XK_s,          spawn,                  SHCMD("flameshot gui -c -p $HOME/gdrive-pessoal/downloads/screenshots/") },
+	{ MODKEY|ShiftMask,             XK_s,          spawn,                  SHCMD("QT_ENABLE_HIGHDPI_SCALING=0 flameshot gui -c -p $HOME/gdrive-pessoal/downloads/screenshots/") },
 	{ MODKEY|ControlMask,           XK_s,          spawn,                  SHCMD("$HOME/.scripts/print-to-markdown-note") },
 	{ MODKEY|ControlMask,           XK_k,          spawn,                  SHCMD("$HOME/.scripts/dmenu-kill-processes.sh") },
 	{ MODKEY|ShiftMask,             XK_l,          spawn,                  SHCMD("slock") },
