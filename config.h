@@ -205,6 +205,7 @@ static const Rule rules[] = {
     {                 NULL,             NULL,   "LibreOffice",  NULL,    1 << 2,    0,          -1 },
     {                "zen",             NULL,            NULL,  NULL,    1 << 3,    0,          -1 },
     {                 NULL,             NULL,   "web-uberall",  NULL,    1 << 3,    0,          -1 },
+    {                 NULL,             NULL,          "code",  NULL,    1 << 4,    0,          -1 },
     {       "Virt-manager",             NULL,            NULL,  NULL,    1 << 4,    0,          -1 },
     {             "Cursor",             NULL,            NULL,  NULL,    1 << 4,    0,          -1 },
     {"org.remmina.Remmina",             NULL,            NULL,  NULL,    1 << 4,    0,          -1 },
