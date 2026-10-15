@@ -333,6 +333,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_n,          spawn,                  SHCMD("obsidian") },
 	{ MODKEY|ShiftMask,             XK_d,          spawn,                  SHCMD("dunstctl close-all") },
 	{ MODKEY,                       XK_v,          spawn,                  SHCMD("neovim-anywhere.sh") },
+	{ MODKEY,                       XK_semicolon,  spawn,                  SHCMD("$HOME/.local/bin/whispering-reply") },
 	{ MODKEY,                       XK_F2,         spawn,                  SHCMD("brightnessctl set 5%-; touch /tmp/dwm_backlight_show; ( sleep 2 && rm -f /tmp/dwm_backlight_show && kill -45 $(pidof dwmblocks) ) & kill -45 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_F3,         spawn,                  SHCMD("brightnessctl set +5%; touch /tmp/dwm_backlight_show; ( sleep 2 && rm -f /tmp/dwm_backlight_show && kill -45 $(pidof dwmblocks) ) & kill -45 $(pidof dwmblocks)") },
 	{ MODKEY|ShiftMask,             XK_F2,         spawn,                  SHCMD("brightnessctl set 1%-; touch /tmp/dwm_backlight_show; ( sleep 2 && rm -f /tmp/dwm_backlight_show && kill -45 $(pidof dwmblocks) ) & kill -45 $(pidof dwmblocks)") },
