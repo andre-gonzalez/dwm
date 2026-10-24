@@ -236,6 +236,7 @@ static const Rule rules[] = {
     {                 NULL,             NULL,"Pritunl Client",  NULL,    1 << 8,    0,          -1 },
     {                 NULL,             NULL,    "Whispering",  NULL,    1 << 8,    0,          -1 },
     {     "AWS VPN Client",             NULL,            NULL,  NULL,    1 << 8,    0,          -1 },
+    {      "opensnitch-ui",             NULL,            NULL,  NULL,    1 << 8,    0,          -1 },
     {                 NULL,             NULL,     "Bitwarden",  NULL,    1 << 8,    0,          -1 },
     {                 NULL,             NULL,      "Extension: (Bitwarden Password Manager) - Bitwarden — Zen Browser",  NULL,    1 << 8,    0,          -1 },
     /* ~/.scripts/neovim-anywhere.sh: scratch nvim buffer, floats centered on the
